@@ -1,6 +1,15 @@
-#font * {
-  animation: dash 1s linear forwards;
+/*
+#font path ,
+#font polyline {
   animation-timing-function: ease-in-out;
+  animation-name: dash;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+#font .layer path ,
+#font .layer polyline {
+  animation-delay: 0.2s !important;
 }
 
 @keyframes dash {
@@ -8,6 +17,7 @@
     stroke-dashoffset: 0;
   }
 }
+*/
 
 .word {
   white-space: nowrap;
