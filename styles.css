@@ -1,0 +1,32 @@
+#font * {
+  animation: dash 1s linear forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.word {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 40px;
+  margin-bottom: 30px;
+}
+
+.letter {
+  margin-right: 10px;
+}
+
+.root {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
