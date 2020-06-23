@@ -1,11 +1,10 @@
 /* global motext */
 
-motext('#target', tl => {
-  console.log('one')
-  tl.play()
-})
+motext('#singleTarget', tl => tl.play())
 
-motext('.newTarget', tl => {
-  console.log('two')
-  tl.play()
+motext('.multiTarget', tl => tl.play(), {
+  colors: ['red', 'green', 'yellow'],
+  revealProperty: 'scale',
+  revealAmount: 0,
+  staggerAmount: 0.2
 })
