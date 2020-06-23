@@ -5,4 +5,5 @@ body, html {
 #singleTarget, .multiTarget {
   text-align: center;
   margin: 100px;
+  font-size: 48px;
 }

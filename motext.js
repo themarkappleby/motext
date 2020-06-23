@@ -12,7 +12,7 @@ const DEFAULT_OPTIONS = {
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,
-  staggerAmount: 0.03,
+  staggerAmount: 0.1,
   staggerEase: 'none'
 }
 
@@ -48,7 +48,7 @@ function loadSVG (path, cb) {
 }
 
 function prepSVG (options) {
-  var font = document.querySelector('.motext-font #font')
+  var font = document.querySelector('.motext-font #motext')
   prepFontStyles(font, options)
   layerCharacters(font, options)
 }
@@ -56,7 +56,9 @@ function prepSVG (options) {
 function prepFontStyles (font, options) {
   Array.from(font.children).forEach(char => {
     char.removeAttribute('transform')
+    char.removeAttribute('opacity')
     char.setAttribute('class', 'motext-colored')
+
     var strokes = Array.from(char.children)
     strokes.forEach(stroke => {
       var length = stroke.getTotalLength() + 1
@@ -77,6 +79,9 @@ function layerCharacters (font, options) {
 }
 
 function insertHTML (target, options) {
+  const BASE_SVG_FONT_SIZE = 55
+  const fontSize = getFontSize(target)
+  const scale = fontSize / BASE_SVG_FONT_SIZE
   let html = '<span class="motext"><span class="motext-word">'
   target.textContent.split('').forEach(char => {
     if (char === ' ') {
@@ -85,15 +90,21 @@ function insertHTML (target, options) {
       const svgChar = document.querySelector('#' + char)
       const svgLayer = document.querySelector('#' + char + 'l')
       const size = svgChar.getBBox()
-      html += openSVG(size.width + 10, size.height + 10)
+      html += openSVG(size.width + 10, size.height + 10, scale)
       html += svgChar.outerHTML
       html += svgLayer.outerHTML
-      html += '</g></g></svg>'
+      html += '</g></svg>'
     }
   })
   html += '</span></span>'
   target.innerHTML = html
   applyColors(target, options)
+}
+
+function getFontSize (target) {
+  let fontSize = window.getComputedStyle(target, null).getPropertyValue('font-size')
+  fontSize = parseFloat(fontSize)
+  return fontSize
 }
 
 function applyColors (target, options) {
@@ -138,7 +149,7 @@ function createTimeline (target, options) {
 }
 
 function revealCharacter (options) {
-  const target = this.targets()[0].parentNode.parentNode.parentNode.parentNode
+  const target = this.targets()[0].closest('.motext-letter')
   if (!target.getAttribute('data-revealed')) {
     const revealParams = {
       ease: options.revealEase,
@@ -150,8 +161,7 @@ function revealCharacter (options) {
   }
 }
 
-function openSVG (width, height) {
-  return `<svg class="motext-letter" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(5, 5)">
-        <g id="font" stroke-width="10">`
+function openSVG (width, height, scale) {
+  return `<svg class="motext-letter" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g class="motext-letterInner" stroke-width="10" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(5, 5)">`
 }
