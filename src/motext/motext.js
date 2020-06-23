@@ -18,7 +18,7 @@ const DEFAULT_OPTIONS = {
 
 function motext (selector, cb, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
-  loadSVG('/motext.svg', () => {
+  loadSVG('/motext/motext.svg', () => {
     const targets = document.querySelectorAll(selector)
     Array.from(targets).forEach(target => {
       prepSVG(options)

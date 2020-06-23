@@ -1,0 +1,15 @@
+body, html {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#singleTarget {
+  text-align: center;
+  font-size: 48px;
+  position: absolute;
+  margin: 0;
+  top: 40%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
