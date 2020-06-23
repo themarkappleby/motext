@@ -1,5 +1,7 @@
 /* global gsap fetch */
 
+let fetchPromise = null
+
 const DEFAULT_OPTIONS = {
   color: '#000000',
   colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
@@ -16,27 +18,33 @@ const DEFAULT_OPTIONS = {
 
 function motext (selector, cb, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
-  const target = document.querySelector(selector)
   loadSVG('/motext.svg', () => {
-    prepSVG(options)
-    insertHTML(target)
-    cb(createTimeline(target, options))
+    const targets = document.querySelectorAll(selector)
+    Array.from(targets).forEach(target => {
+      prepSVG(options)
+      insertHTML(target, options)
+      cb(createTimeline(target, options))
+    })
   })
 }
 
 function loadSVG (path, cb) {
-  fetch(path)
-    .then(response => response.text())
-    .then(text => {
-      const fontWrapper = document.createElement('div')
-      fontWrapper.innerHTML = text
-      fontWrapper.setAttribute('class', 'motext-font')
-      document.body.appendChild(fontWrapper)
-      cb()
-    })
-    .catch(err => {
-      console.log(err)
-    })
+  if (fetchPromise) {
+    fetchPromise.then(cb)
+  } else {
+    fetchPromise = fetch(path)
+      .then(response => response.text())
+      .then(text => {
+        const fontWrapper = document.createElement('div')
+        fontWrapper.innerHTML = text
+        fontWrapper.setAttribute('class', 'motext-font')
+        document.body.appendChild(fontWrapper)
+        cb()
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 }
 
 function prepSVG (options) {
@@ -68,7 +76,7 @@ function layerCharacters (font, options) {
   })
 }
 
-function insertHTML (target) {
+function insertHTML (target, options) {
   let html = '<span class="motext"><span class="motext-word">'
   target.textContent.split('').forEach(char => {
     if (char === ' ') {
@@ -85,9 +93,10 @@ function insertHTML (target) {
   })
   html += '</span></span>'
   target.innerHTML = html
+  applyColors(target, options)
 }
 
-function createTimeline (target, options) {
+function applyColors (target, options) {
   let color = options.colors[0]
   Array.from(target.querySelectorAll('.motext-colored')).forEach(char => {
     char.setAttribute('stroke', color)
@@ -97,8 +106,12 @@ function createTimeline (target, options) {
     }
     color = options.colors[index]
   })
+}
+
+function createTimeline (target, options) {
+  const colored = target.querySelectorAll('.motext-colored path, .motext-colored polyline')
   var tl = gsap.timeline()
-  tl.to('.motext-colored path, .motext-colored polyline', {
+  tl.to(colored, {
     duration: options.strokeDuration,
     ease: options.strokeEase,
     strokeDashoffset: 0,
@@ -110,7 +123,8 @@ function createTimeline (target, options) {
       }
     }
   })
-  tl.to('.motext-solid path, .motext-solid polyline', {
+  const solid = target.querySelectorAll('.motext-solid path, .motext-solid polyline')
+  tl.to(solid, {
     duration: options.strokeDuration,
     ease: options.strokeEase,
     strokeDashoffset: 0,
