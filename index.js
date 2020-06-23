@@ -1,4 +1,4 @@
-/* global TimelineLite */
+/* global gsap */
 
 function init () {
   var font = document.querySelector('#font')
@@ -14,7 +14,6 @@ function prepFontStyles (font) {
       var length = stroke.getTotalLength() + 1
       stroke.style.strokeDasharray = length
       stroke.style.strokeDashoffset = length
-      // stroke.style.animationDuration = length / 100 + 's'
     })
   })
 }
@@ -51,21 +50,36 @@ function process (target) {
 
 function postprocess (target) {
   const colors = [
-    '#a5cc52', '#1896a3', '#f1c30b', '#ed5743'
+    '#0dafb7', '#eabc36', '#e154ed', '#62d628'
   ]
+  let color = colors[0]
   Array.from(target.querySelectorAll('.base')).forEach(char => {
-    const color = colors[Math.floor(Math.random() * colors.length)]
     char.setAttribute('stroke', color)
+    let index = colors.indexOf(color) + 1
+    if (index >= colors.length) {
+      index = 0
+    }
+    color = colors[index]
   })
 
-  var tl = new TimelineLite()
+  var tl = gsap.timeline()
   tl.to('.base path, .base polyline', {
     duration: 0.4,
     strokeDashoffset: 0,
     stagger: {
       amount: 2,
       onStart: function () {
-        console.log('tween', this)
+        const target = this.targets()[0].parentNode.parentNode.parentNode.parentNode
+        console.log(target)
+        if (!gsap.isTweening(target)) {
+          gsap.fromTo(target, {
+            y: -10
+          }, {
+            y: 0,
+            ease: 'power2.out',
+            duration: 0.3
+          })
+        }
       }
     }
   })
@@ -75,7 +89,7 @@ function postprocess (target) {
     stagger: {
       amount: 2
     }
-  }, 0.2)
+  }, 0.08)
 }
 
 function openSVG (width, height) {
