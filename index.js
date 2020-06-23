@@ -1,3 +1,3 @@
 /* global motext */
 
-motext('#foo').play()
+motext('#target').play()

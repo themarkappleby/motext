@@ -1,29 +1,12 @@
-/*
-#font path ,
-#font polyline {
-  animation-timing-function: ease-in-out;
-  animation-name: dash;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-#font .layer path ,
-#font .layer polyline {
-  animation-delay: 0.2s !important;
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-*/
-
 body, html {
   margin: 0;
 }
 
-.word {
+.motext {
+  display: inline-block;
+}
+
+.motext-word {
   white-space: nowrap;
   display: inline-block;
   vertical-align: bottom;
@@ -31,11 +14,11 @@ body, html {
   margin-bottom: 30px;
 }
 
-.letter {
+.motext-letter {
   margin-right: 10px;
 }
 
-.root {
+.motext-font {
   position: absolute;
   top: -9999px;
   left: -9999px;
@@ -45,7 +28,7 @@ body, html {
   visibility: hidden;
 }
 
-#foo {
+#target {
   text-align: center;
   margin: 100px;
 }

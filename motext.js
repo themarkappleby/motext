@@ -1,11 +1,13 @@
 /* global gsap */
 
 const DEFAULT_OPTIONS = {
+  color: 'black',
   colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
-  dropAmount: 10,
-  dropDuration: 0.3,
-  dropEase: 'power2.out',
-  strokeDuration: 0.4,
+  dropAmount: 12,
+  dropDuration: 1.2,
+  dropEase: 'elastic',
+  strokeDuration: 1,
+  strokeEase: 'slow',
   offsetDuration: 0.08,
   staggerAmount: 0.05
 }
@@ -13,20 +15,21 @@ const DEFAULT_OPTIONS = {
 function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
   const target = document.querySelector(selector)
-  init()
-  process(target)
+  prepSVG(options)
+  insertHTML(target)
   return createTimeline(target, options)
 }
 
-function init () {
-  var font = document.querySelector('#font')
-  prepFontStyles(font)
-  layerCharacters(font)
+function prepSVG (options) {
+  var font = document.querySelector('.motext-font #font')
+  prepFontStyles(font, options)
+  layerCharacters(font, options)
 }
-function prepFontStyles (font) {
+
+function prepFontStyles (font, options) {
   Array.from(font.children).forEach(char => {
     char.removeAttribute('transform')
-    char.setAttribute('class', 'base')
+    char.setAttribute('class', 'motext-colored')
     var strokes = Array.from(char.children)
     strokes.forEach(stroke => {
       var length = stroke.getTotalLength() + 1
@@ -35,21 +38,22 @@ function prepFontStyles (font) {
     })
   })
 }
-function layerCharacters (font) {
+
+function layerCharacters (font, options) {
   Array.from(font.children).forEach(char => {
     const charLayer = char.cloneNode(true)
-    charLayer.setAttribute('class', 'layer')
+    charLayer.setAttribute('class', 'motext-solid')
     charLayer.setAttribute('id', char.id + 'l')
-    charLayer.setAttribute('stroke', 'black')
+    charLayer.setAttribute('stroke', options.color)
     font.appendChild(charLayer)
   })
 }
 
-function process (target) {
-  let html = '<span class="word">'
+function insertHTML (target) {
+  let html = '<span class="motext"><span class="motext-word">'
   target.textContent.split('').forEach(char => {
     if (char === ' ') {
-      html += '</span><span class="word">'
+      html += '</span><span class="motext-word">'
     } else {
       const svgChar = document.querySelector('#' + char)
       const svgLayer = document.querySelector('#' + char + 'l')
@@ -60,13 +64,13 @@ function process (target) {
       html += '</g></g></svg>'
     }
   })
-  html += '</span>'
+  html += '</span></span>'
   target.innerHTML = html
 }
 
 function createTimeline (target, options) {
   let color = options.colors[0]
-  Array.from(target.querySelectorAll('.base')).forEach(char => {
+  Array.from(target.querySelectorAll('.motext-colored')).forEach(char => {
     char.setAttribute('stroke', color)
     let index = options.colors.indexOf(color) + 1
     if (index >= options.colors.length) {
@@ -74,29 +78,21 @@ function createTimeline (target, options) {
     }
     color = options.colors[index]
   })
-
   var tl = gsap.timeline()
-  tl.to('.base path, .base polyline', {
+  tl.to('.motext-colored path, .motext-colored polyline', {
     duration: options.strokeDuration,
+    ease: options.strokeEase,
     strokeDashoffset: 0,
     stagger: {
       each: options.staggerAmount,
       onStart: function () {
-        const target = this.targets()[0].parentNode.parentNode.parentNode.parentNode
-        if (!gsap.isTweening(target)) {
-          gsap.fromTo(target, {
-            y: options.dropAmount * -1
-          }, {
-            y: 0,
-            ease: options.dropEase,
-            duration: options.dropDuration
-          })
-        }
+        dropCharacter.call(this, options)
       }
     }
   })
-  tl.to('.layer path, .layer polyline', {
+  tl.to('.motext-solid path, .motext-solid polyline', {
     duration: options.strokeDuration,
+    ease: options.strokeEase,
     strokeDashoffset: 0,
     stagger: {
       each: options.staggerAmount
@@ -106,8 +102,22 @@ function createTimeline (target, options) {
   return tl
 }
 
+function dropCharacter (options) {
+  const target = this.targets()[0].parentNode.parentNode.parentNode.parentNode
+  if (!target.getAttribute('data-dropped')) {
+    target.setAttribute('data-dropped', true)
+    gsap.fromTo(target, {
+      y: options.dropAmount * -1
+    }, {
+      y: 0,
+      ease: options.dropEase,
+      duration: options.dropDuration
+    })
+  }
+}
+
 function openSVG (width, height) {
-  return `<svg class="letter" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  return `<svg class="motext-letter" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(5, 5)">
         <g id="font" stroke-width="10">`
 }
