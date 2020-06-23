@@ -1,3 +1,5 @@
 /* global motext */
 
-motext('#target').play()
+motext('#target', tl => {
+  tl.play()
+})

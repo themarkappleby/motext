@@ -1,7 +1,7 @@
-/* global gsap */
+/* global gsap fetch */
 
 const DEFAULT_OPTIONS = {
-  color: 'black',
+  color: '#000000',
   colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
   revealProperty: 'y',
   revealAmount: -6,
@@ -10,16 +10,33 @@ const DEFAULT_OPTIONS = {
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,
-  staggerAmount: 0.05,
+  staggerAmount: 0.03,
   staggerEase: 'none'
 }
 
-function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
+function motext (selector, cb, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
   const target = document.querySelector(selector)
-  prepSVG(options)
-  insertHTML(target)
-  return createTimeline(target, options)
+  loadSVG('/motext.svg', () => {
+    prepSVG(options)
+    insertHTML(target)
+    cb(createTimeline(target, options))
+  })
+}
+
+function loadSVG (path, cb) {
+  fetch(path)
+    .then(response => response.text())
+    .then(text => {
+      const fontWrapper = document.createElement('div')
+      fontWrapper.innerHTML = text
+      fontWrapper.setAttribute('class', 'motext-font')
+      document.body.appendChild(fontWrapper)
+      cb()
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 function prepSVG (options) {

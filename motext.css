@@ -1,0 +1,25 @@
+.motext {
+  display: inline-block;
+}
+
+.motext-word {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 40px;
+  margin-bottom: 30px;
+}
+
+.motext-letter {
+  margin-right: 10px;
+}
+
+.motext-font {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
