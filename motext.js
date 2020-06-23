@@ -3,13 +3,15 @@
 const DEFAULT_OPTIONS = {
   color: 'black',
   colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
-  dropAmount: 12,
-  dropDuration: 1.2,
-  dropEase: 'elastic',
+  revealProperty: 'y',
+  revealAmount: -6,
+  revealDuration: 0.8,
+  revealEase: 'elastic',
   strokeDuration: 1,
   strokeEase: 'slow',
-  offsetDuration: 0.08,
-  staggerAmount: 0.05
+  offsetDuration: 0.15,
+  staggerAmount: 0.05,
+  staggerEase: 'none'
 }
 
 function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
@@ -85,8 +87,9 @@ function createTimeline (target, options) {
     strokeDashoffset: 0,
     stagger: {
       each: options.staggerAmount,
+      ease: options.staggerEase,
       onStart: function () {
-        dropCharacter.call(this, options)
+        revealCharacter.call(this, options)
       }
     }
   })
@@ -95,24 +98,24 @@ function createTimeline (target, options) {
     ease: options.strokeEase,
     strokeDashoffset: 0,
     stagger: {
-      each: options.staggerAmount
+      each: options.staggerAmount,
+      ease: options.staggerEase
     }
   }, options.offsetDuration)
   tl.pause()
   return tl
 }
 
-function dropCharacter (options) {
+function revealCharacter (options) {
   const target = this.targets()[0].parentNode.parentNode.parentNode.parentNode
-  if (!target.getAttribute('data-dropped')) {
-    target.setAttribute('data-dropped', true)
-    gsap.fromTo(target, {
-      y: options.dropAmount * -1
-    }, {
-      y: 0,
-      ease: options.dropEase,
-      duration: options.dropDuration
-    })
+  if (!target.getAttribute('data-revealed')) {
+    const revealParams = {
+      ease: options.revealEase,
+      duration: options.revealDuration
+    }
+    revealParams[options.revealProperty] = options.revealAmount
+    gsap.from(target, revealParams)
+    target.setAttribute('data-revealed', true)
   }
 }
 
