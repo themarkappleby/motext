@@ -5,245 +5,245 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="motext-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
-        <g id="motext" stroke="#000000">
-            <g id="mo-A" transform="translate(22.000000, 23.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+        <g id="motext" stroke="#000000" stroke-width="8">
+            <g id="mo-A" transform="translate(22.000000, 23.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path" points="0.209960938 38.4140625 17.5234375 0.912109375 34.3789062 38.4140625"></polyline>
                 <path d="M6.43066406,31.0213696 L28.3564453,30.9786304" id="Path-2"></path>
             </g>
-            <g id="mo-B" transform="translate(90.000000, 26.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-B" transform="translate(90.000000, 26.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.374023438,0.78125 C0.374023438,0.78125 26.3291016,-2.921875 26.3291016,8.12109375 C26.3291016,19.1640625 0.458984375,17.105304 0.458984375,17.105304 C0.458984375,17.105304 27.5214844,14.9130859 27.5214844,27.4482422 C27.5214844,39.9833984 0.374023438,35.3046875 0.374023438,35.3046875 L0.374023438,0.78125 Z" id="B"></path>
             </g>
-            <g id="mo-C" transform="translate(150.000000, 25.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-C" transform="translate(150.000000, 25.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M26.1552734,3.19921875 C26.1552734,3.19921875 0.719726562,-7.6894084 0.66015625,18.9521932 C0.600585937,45.5937947 26.1552734,34.5917969 26.1552734,34.5917969" id="C"></path>
             </g>
-            <g id="mo-D" transform="translate(210.000000, 25.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round">
+            <g id="mo-D" transform="translate(210.000000, 25.000000)" stroke-linecap="square" stroke-linejoin="round">
                 <path d="M0.930175781,1.39013672 C0.930175781,1.39013672 30.9067383,-3.84716797 30.9067383,18.2714844 C30.9067383,40.3901367 1.57324219,36.2719727 1.57324219,36.2719727 L0.930175781,1.39013672 Z" id="Path-3"></path>
             </g>
-            <g id="mo-G" transform="translate(383.000000, 26.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-G" transform="translate(383.000000, 26.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M27.2172852,1.97070312 C27.2172852,1.97070312 0.149414063,-6.65869141 0.806152344,17.5019531 C1.46289062,41.6625977 28.7954102,33.9189453 29.9394531,33.3110352 C31.0834961,32.703125 31.9394531,19.4622646 31.9394531,19.4622646 L21.8981944,19.4622646" id="Path-11"></path>
             </g>
-            <g id="mo-E" transform="translate(276.000000, 26.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-E" transform="translate(276.000000, 26.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-4" points="23.7734375 0.171875 0.623860279 0.171875 0.623860279 35.0644913 23.6523478 35.0644913"></polyline>
                 <path d="M2.03808594,17.0410156 L19.1430664,17.1606445" id="Path-5"></path>
             </g>
-            <g id="mo-F" transform="translate(330.000000, 26.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-F" transform="translate(330.000000, 26.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-6" points="0.598632812 35.0927734 0.598632812 0.756006231 21.3828125 0.756006231"></polyline>
                 <path d="M8.23828125,20 L20.2767131,20" id="Path-7"></path>
             </g>
-            <g id="mo-H" transform="translate(446.000000, 26.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-H" transform="translate(446.000000, 26.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M2.66666667,0.999619537 L2.66666667,35.0003911" id="Path-8"></path>
                 <path d="M32.6666667,0.999619537 L32.6666667,35.0003911" id="Path-8"></path>
                 <path d="M3.00732422,18 L32.002191,18" id="Path-9"></path>
             </g>
-            <g id="mo-I" transform="translate(512.000000, 26.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-I" transform="translate(512.000000, 26.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M2.66666667,0.601182037 L2.66666667,34.6019536" id="Path-8"></path>
             </g>
-            <g id="mo-J" transform="translate(21.000000, 89.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-J" transform="translate(21.000000, 89.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M9.73486328,0.0229492188 L9.73486328,25.8040777 C9.73486328,25.8040777 11.3261719,34.8959961 0.326660156,35.6533203" id="Path-10"></path>
             </g>
-            <g id="mo-K" transform="translate(67.000000, 90.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-K" transform="translate(67.000000, 90.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1,0.148925781 L1,33.8571448" id="Path-12"></path>
                 <polyline id="Path-13" points="25.0195312 0.0224609375 7.30078125 16.8259277 26.3310547 34.4316406"></polyline>
             </g>
-            <g id="mo-L" transform="translate(129.000000, 90.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-L" transform="translate(129.000000, 90.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-14" points="0.0610351562 0.360839844 0.0610351562 33.732356 19.4219923 33.732356"></polyline>
             </g>
-            <g id="mo-M" transform="translate(181.000000, 87.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-M" transform="translate(181.000000, 87.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-15" points="0.4765625 36.8515625 0.4765625 0.25584978 17.3999023 32.1977539 34.7451172 0.1015625 34.7451172 37.2947825"></polyline>
             </g>
-            <g id="mo-N" transform="translate(251.000000, 88.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-N" transform="translate(251.000000, 88.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-16" points="0.799804688 36.0507812 0.799804688 0.233795749 29.0380859 38.0341797 29.0380859 2.08781256"></polyline>
             </g>
-            <g id="mo-O" transform="translate(315.000000, 88.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-O" transform="translate(315.000000, 88.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M17.3129883,0.69140625 C17.3129883,0.69140625 32.8222656,0.421386719 32.8222656,19.1362305 C32.8222656,37.8510742 17.2944336,36.7983398 17.2944336,36.7983398 C17.2944336,36.7983398 1.51123047,37.3623047 0.961425781,18.8974609 C0.411621094,0.432617187 17.3129883,0.69140625 17.3129883,0.69140625 Z" id="Path-17"></path>
             </g>
-            <g id="mo-P" transform="translate(383.000000, 89.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-P" transform="translate(383.000000, 89.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.311035156,34.5083008 L0.311035156,1.61018922 C0.311035156,1.61018922 26.1557617,-2.53808594 26.0737305,9.75244141 C25.9916992,22.0429687 2.74023437,19.7734375 2.74023437,19.7734375" id="Path-18"></path>
             </g>
-            <g id="mo-Q" transform="translate(443.000000, 89.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-Q" transform="translate(443.000000, 89.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M15.2905273,0.195800781 C15.2905273,0.195800781 31.8530273,-1.00732422 31.8530273,18.5170898 C31.8530273,38.0415039 16.9838867,35.5625 16.137207,35.5625 C15.2905273,35.5625 0.144042969,36.2661133 0.144042969,18.230957 C0.144042969,0.195800781 15.2905273,0.195800781 15.2905273,0.195800781 Z" id="Path-19"></path>
                 <path d="M21.4736328,37.0722656 C21.4736328,37.0722656 27.1796875,42.0932617 29.6088867,47.1142578" id="Path-20"></path>
             </g>
-            <g id="mo-R" transform="translate(510.000000, 89.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-R" transform="translate(510.000000, 89.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.825683594,34.9477539 L0.825683594,1.10400183 C0.825683594,1.10400183 26.390625,-2.10351563 26.390625,9.90576172 C26.390625,21.9150391 2.77587891,18.902832 2.77587891,18.902832 C2.77587891,18.902832 21.140625,22.3603516 25.2714844,34.3125" id="Path-21"></path>
             </g>
-            <g id="mo-S" transform="translate(24.000000, 153.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-S" transform="translate(24.000000, 153.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M23.8771973,1.4284668 C23.8771973,1.4284668 -0.106445312,-4.73486328 1.09008789,8.57275391 C2.28662109,21.8803711 24.9230957,14.7487793 24.9230957,25.9846191 C24.9230957,37.220459 8.14624023,36.1101074 0.445068359,32.7194824" id="Path-22"></path>
             </g>
-            <g id="mo-T" transform="translate(80.000000, 149.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-T" transform="translate(80.000000, 149.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.864746094,4 L28.3164664,4" id="Path-23"></path>
                 <path d="M14,3.80883789 L14,38.1912253" id="Path-24"></path>
             </g>
-            <g id="mo-U" transform="translate(140.000000, 152.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-U" transform="translate(140.000000, 152.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.749755859,0.717773438 L0.749755859,23.0256239 C0.749755859,23.0256239 1.69897461,36.1096191 14.4719238,36.1096191 C27.244873,36.1096191 28.9824219,23.9780273 28.9824219,23.9780273 L28.9824219,1.04612266" id="Path-25"></path>
             </g>
-            <g id="mo-V" transform="translate(202.000000, 153.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-V" transform="translate(202.000000, 153.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-26" points="0.781982422 0.690673828 17.2106934 36.5983887 33.3178711 1.11401367"></polyline>
             </g>
-            <g id="mo-W" transform="translate(267.000000, 149.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-W" transform="translate(267.000000, 149.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-27" points="0.567382812 4.48632812 13.40625 40.8618164 27.4677734 0.912109375 41.7592773 41.6313477 54.3818359 4.02539062"></polyline>
             </g>
-            <g id="mo-X" transform="translate(354.000000, 151.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-X" transform="translate(354.000000, 151.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.261230469,0.756347656 L26.715332,35.6665039" id="Path-28"></path>
                 <path d="M1.75341797,35.6113281 L26.6142578,2.06445312" id="Path-29"></path>
             </g>
-            <g id="mo-Y" transform="translate(412.000000, 152.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-Y" transform="translate(412.000000, 152.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-30" points="0.996582031 0.995605469 14.9619141 19.6547852 14.9619141 34.507931"></polyline>
                 <path d="M15.8828125,16.9926758 L28.546875,1.71240234" id="Path-31"></path>
             </g>
-            <g id="mo-Z" transform="translate(472.000000, 153.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-Z" transform="translate(472.000000, 153.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-32" points="1.61474609 0.361816406 25.1990657 0.361816406 0.709472656 34.1508789 23.8008374 34.1508789"></polyline>
             </g>
-            <g id="mo-a" transform="translate(23.000000, 227.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-a" transform="translate(23.000000, 227.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M2.265625,2.18237305 C4.84887695,1.33056641 13.9125977,-1.21240234 16.9125977,2.18237305 C19.9125977,5.57714844 19.3137207,23.2775726 19.3137207,23.2775726" id="Path-33"></path>
                 <path d="M18.1027832,12.1254883 C18.1027832,12.1254883 0.422851562,9.0402832 0.422851562,18.3005371 C0.422851562,27.560791 10.2114258,23.4245605 17.4282227,21.1008301" id="Path-34"></path>
             </g>
-            <g id="mo-b" transform="translate(75.000000, 215.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-b" transform="translate(75.000000, 215.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1,0.573730469 L1,35.2006174" id="Path-35"></path>
                 <path d="M3.67675781,21.6962891 C3.67675781,21.6962891 8.08178711,13.2084961 17.0224609,12.7141113 C25.9631348,12.2197266 25.0036621,22.1225586 24.3989258,25.8056641 C23.7941895,29.4887695 22.6851522,35.6049805 15.0305176,35.6049805 C7.37588298,35.6049805 3.67675781,21.6962891 3.67675781,21.6962891 Z" id="Path-36"></path>
             </g>
-            <g id="mo-c" transform="translate(132.000000, 227.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-c" transform="translate(132.000000, 227.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M16.8776855,1.85620117 C16.8776855,1.85620117 0.0234375,-3.68408203 0.545898438,11.940918 C1.06835938,27.565918 12.5783691,26.2177734 17.8605957,23.4765625" id="Path-37"></path>
             </g>
-            <g id="mo-d" transform="translate(180.000000, 216.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-d" transform="translate(180.000000, 216.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M24,0.317138672 L24,34.1713443" id="Path-38"></path>
                 <path d="M21.6103516,20.7890625 C21.6103516,20.7890625 15.5178223,12.0915527 8.82104492,12.1296387 C2.12426758,12.1677246 -0.520996094,17.8193359 0.640136719,25.1298828 C1.80126953,32.4404297 4.41723633,36.0505371 10.5605469,34.1225586 C16.7038574,32.1945801 21.6103516,20.7890625 21.6103516,20.7890625 Z" id="Path-39"></path>
             </g>
-            <g id="mo-e" transform="translate(236.000000, 227.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-e" transform="translate(236.000000, 227.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M3.3984375,11.7814941 L21.8983491,11.7814941 C21.8983491,11.7814941 22.9277344,0.391357422 12.1630859,0.241210938 C1.3984375,0.0910644531 0.559326172,6.46557617 0.559326172,13.453125 C0.559326172,20.4406738 7.09716797,27.045166 18.7646484,23.8527832" id="Path-40"></path>
             </g>
-            <g id="mo-f" transform="translate(285.000000, 214.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-f" transform="translate(285.000000, 214.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M6.78930664,36.293457 L6.78930664,8.51941962 C6.78930664,8.51941962 8.33251953,0.122802734 16.6486816,0.268310547" id="Path-41"></path>
                 <path d="M0.703613281,15 L14.8864502,15" id="Path-42"></path>
             </g>
-            <g id="mo-g" transform="translate(329.000000, 227.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-g" transform="translate(329.000000, 227.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M24.1357422,0.550292969 L24.1357422,27.2947241 C24.1357422,27.2947241 20.3935547,40.0861352 2.77099609,33.6904297" id="Path-43"></path>
                 <path d="M23.503418,13.2695313 C23.503418,13.2695313 17.9936523,-0.19140625 8.19677734,0.922851563 C-1.60009766,2.03710937 -1.21044922,15.8305664 5.40576172,21.7084961 C12.0219727,27.5864258 23.503418,13.2695313 23.503418,13.2695313 Z" id="Path-44"></path>
             </g>
-            <g id="mo-h" transform="translate(387.000000, 215.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-h" transform="translate(387.000000, 215.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.58105469,0.348632812 L1.58105469,36.1274687" id="Path-45"></path>
                 <path d="M3.72509766,18.5 C3.72509766,18.5 9.01025391,12.7172852 15.6450195,12.7172852 C22.2797852,12.7172852 21.7910156,35.6767578 21.7910156,35.6767578" id="Path-46"></path>
             </g>
-            <g id="mo-i" transform="translate(442.000000, 212.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-i" transform="translate(442.000000, 212.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.46435547,16.5131836 L1.46435547,38.9345399" id="Path"></path>
                 <path d="M1.21435547,0.8984375 L1.21435547,3.18359955" id="Path-47"></path>
             </g>
-            <g id="mo-j" transform="translate(469.000000, 213.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-j" transform="translate(469.000000, 213.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M9.78955078,14.9794922 L9.78955078,41.348948 C9.78955078,41.348948 7.28173828,47.7924805 0.658203125,48.7246094" id="Path-48"></path>
                 <path d="M9.50537109,0.397460938 L9.50537109,1.83880366" id="Path-49"></path>
             </g>
-            <g id="mo-k" transform="translate(512.000000, 215.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-k" transform="translate(512.000000, 215.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.53417969,0.133789062 L1.53417969,36.2964091" id="Path-50"></path>
                 <polyline id="Path-51" points="20.8154297 12.4785156 4.58447266 23.4892578 20.7143555 34.7514648"></polyline>
             </g>
-            <g id="mo-l" transform="translate(23.000000, 278.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-l" transform="translate(23.000000, 278.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.89111328,0.618652344 L1.89111328,35.5401968" id="Path-52"></path>
             </g>
-            <g id="mo-m" transform="translate(58.000000, 290.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-m" transform="translate(58.000000, 290.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.63012695,1.11499023 L1.63012695,24.2452633" id="Path-53"></path>
                 <path d="M3.07714844,7.20629883 C3.07714844,7.20629883 12.713623,-0.0737304688 17.2575684,0.848876953 C21.8015137,1.77148438 21.329834,23.6467285 21.329834,23.6467285" id="Path-54"></path>
                 <path d="M23.1147461,7.1809082 C23.1147461,7.1809082 27.5777332,0.627197266 35.1950684,0.627197266 C40.9125977,0.627197266 40.9125977,7.60522461 40.9125977,7.60522461 L40.9125977,23.8393555" id="Path-55"></path>
             </g>
-            <g id="mo-n" transform="translate(131.000000, 290.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-n" transform="translate(131.000000, 290.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.98364258,1.55249023 L1.98364258,24.4813501" id="Path-56"></path>
                 <path d="M3.43774414,8.31665039 C3.43774414,8.31665039 7.45409355,0.380371525 15.7866211,0.905273438 C22.7937012,1.34667969 23.0629883,8.24267578 23.0629883,8.24267578 L23.0629883,24.2392578" id="Path-57"></path>
             </g>
-            <g id="mo-o" transform="translate(187.000000, 290.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-o" transform="translate(187.000000, 290.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M10.9711914,0.936035156 C13.8762207,0.936035156 22.1567383,1.73144531 22.1567383,11.8498535 C22.1567383,21.9682617 14.5424805,24.2070312 11.6638184,24.2521973 C8.78515625,24.2973633 0.443115234,23.5527344 0.443115234,12.6540527 C0.443115234,1.75537109 8.06616211,0.936035156 10.9711914,0.936035156 Z" id="Path-58"></path>
             </g>
-            <g id="mo-p" transform="translate(242.000000, 290.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-p" transform="translate(242.000000, 290.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.24267578,0.975097656 L1.24267578,35.2128288" id="Path-59"></path>
                 <path d="M2.74682617,7.09130859 C2.74682617,7.09130859 7.0637207,1.15966797 15.5898438,1.34130859 C24.1159668,1.52294922 24.2436523,10.9633789 23.3991699,17.6938477 C22.5546875,24.4243164 12.0839844,26.6079102 3.55639648,18.2756348" id="Path-60"></path>
             </g>
-            <g id="mo-q" transform="translate(298.000000, 290.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-q" transform="translate(298.000000, 290.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M23.371582,1.53466797 L23.371582,34.5299819" id="Path-61"></path>
                 <path d="M23.3164062,13.6796875 C23.3164062,13.6796875 15.9741211,0.801269531 8.15136719,0.801269531 C0.328613281,0.801269531 -2.42675781,11.3320312 3.86523438,20.4946289 C10.1572266,29.6572266 23.3164062,13.6796875 23.3164062,13.6796875 Z" id="Path-62"></path>
             </g>
-            <g id="mo-r" transform="translate(354.000000, 291.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-r" transform="translate(354.000000, 291.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.95068359,0.607177734 L1.95068359,23.2374061" id="Path-63"></path>
                 <path d="M4.03076172,6.28881836 C4.03076172,6.28881836 9.47705078,0.571777344 16.0053711,0.615234375" id="Path-64"></path>
             </g>
-            <g id="mo-s" transform="translate(397.000000, 290.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-s" transform="translate(397.000000, 290.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M17.4892578,1.984375 C17.4892578,1.984375 0.803222656,-3.40673828 1.87060547,7.16992188 C2.93798828,17.746582 20.8886719,9.32226563 18.8596191,18.5036621 C16.8305664,27.6850586 2.8894043,23.3183594 0.248779297,22.1855469" id="Path-65"></path>
             </g>
-            <g id="mo-t" transform="translate(443.000000, 282.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-t" transform="translate(443.000000, 282.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M8.28662109,0.291992188 L8.28662109,27.0012727 C8.28662109,27.0012727 9.92431641,32.4990234 16.9399414,32.5432129" id="Path-66"></path>
                 <path d="M0.411376953,9.11743164 L16.9727186,9.11743164" id="Path-67"></path>
             </g>
-            <g id="mo-u" transform="translate(490.000000, 291.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-u" transform="translate(490.000000, 291.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.33203125,0.683837891 L0.33203125,17.3129923 C0.33203125,17.3129923 0.984863281,22.8806152 7.77392578,22.8806152 C14.5629883,22.8806152 21.1201172,14.427002 21.1772461,9.90380859 C21.234375,5.38061523 21.1772461,0.284179849 21.1772461,0.284179849" id="Path-68"></path>
                 <path d="M21.2753906,12.5085449 L21.2753906,22.765164" id="Path-69"></path>
             </g>
-            <g id="mo-v" transform="translate(22.000000, 354.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-v" transform="translate(22.000000, 354.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-70" points="0.184570312 0.453125 10.5964355 25.3190918 21.5344238 0.453125"></polyline>
             </g>
-            <g id="mo-w" transform="translate(73.000000, 352.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-w" transform="translate(73.000000, 352.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-71" points="0.263183594 2.12255859 10.470459 27.3874512 21.447876 0.283447266 31.8925781 27.3874512 42.1428223 2.12255859"></polyline>
             </g>
-            <g id="mo-x" transform="translate(146.000000, 353.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-x" transform="translate(146.000000, 353.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.870605469,0.713623047 L20.3701172,23.8598633" id="Path-72"></path>
                 <path d="M0.009765625,24.1662598 L19.5686035,0.756591797" id="Path-73"></path>
             </g>
-            <g id="mo-y" transform="translate(196.000000, 353.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-y" transform="translate(196.000000, 353.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.369384766,0.845458984 L9.95239258,22.0119629" id="Path-74"></path>
                 <path d="M22.7770996,1.21191406 L7.31518555,35.2663574" id="Path-75"></path>
             </g>
-            <g id="mo-z" transform="translate(247.000000, 353.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-z" transform="translate(247.000000, 353.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-76" points="2.40844727 1.12841797 21.6865234 0.873779297 0.819824219 23.8486328 20.7265628 23.8486328"></polyline>
             </g>
-            <g id="mo-1" transform="translate(301.000000, 340.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-1" transform="translate(301.000000, 340.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-77" points="0.525390625 7.64208984 11.7387695 0.547119141 11.7387695 34.7738028"></polyline>
                 <path d="M1.09716797,36.6572266 L23.104884,36.6572266" id="Path-78"></path>
             </g>
-            <g id="mo-2" transform="translate(353.000000, 341.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-2" transform="translate(353.000000, 341.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M2.04516602,2.42211914 C2.04516602,2.42211914 15.6794434,-2.81762695 20.7185059,3.3203125 C25.7575684,9.45825195 13.4904785,21.4580078 13.4904785,21.4580078 L0.916992188,35.0900879 L23.8585774,35.0900879" id="Path-79"></path>
             </g>
-            <g id="mo-3" transform="translate(409.000000, 340.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-3" transform="translate(409.000000, 340.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.831298828,3.12475586 C0.831298828,3.12475586 20.0683594,-4.65698242 20.300293,8.20117187 C20.5322266,21.0593262 3.36889648,18.5856934 3.36889648,18.5856934 C3.36889648,18.5856934 22.0505371,20.0629883 22.0505371,28.8952637 C22.0505371,37.7275391 5.35888672,36.7541504 0.305664062,34.3930664" id="Path-80"></path>
             </g>
-            <g id="mo-4" transform="translate(461.000000, 338.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-4" transform="translate(461.000000, 338.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-81" points="21.4033203 38.717041 21.4033203 0.592041016 0.623779297 31.4423828 27.9455566 31.4423828"></polyline>
             </g>
-            <g id="mo-5" transform="translate(23.000000, 403.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-5" transform="translate(23.000000, 403.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M21.7275391,0.797363281 L2.16070339,0.797363281 L2.16070339,18.7540346 C2.16070339,18.7540346 22.7275391,9.74389648 22.7275391,26.2763672 C22.7275391,42.8088379 3.24438477,35.2861328 0.609130859,34.0361328" id="Path-82"></path>
             </g>
-            <g id="mo-6" transform="translate(78.000000, 403.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-6" transform="translate(78.000000, 403.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M22.6022949,3.25463867 C17.8552246,1.19677734 0.0593261719,-5.58569336 0.0593261719,18.4953613 C0.0593261719,42.576416 19.736084,39.3891602 23.1965332,29.0976562 C26.6569824,18.8061523 15.8046875,11.296875 3.05737305,20.9387207" id="Path-83"></path>
             </g>
-            <g id="mo-7" transform="translate(132.000000, 404.000000)" stroke-linecap="square" stroke-width="8" stroke-linejoin="bevel">
+            <g id="mo-7" transform="translate(132.000000, 404.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <polyline id="Path-84" points="0.433837891 0.230712891 24.9803957 0.230712891 5.32324219 36.2097168"></polyline>
             </g>
-            <g id="mo-8" transform="translate(186.000000, 403.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-8" transform="translate(186.000000, 403.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M23.6584473,9.2487793 C23.6584473,20.8190918 0.947509766,13.9267578 0.947509766,27.6645508 C0.947509766,41.4023437 25.6799316,41.0751953 25.6799316,28.2429199 C25.6799316,15.4106445 2.16870117,20.6875 2.40478516,9.34106445 C2.64086914,-2.00537109 23.6584473,-2.3215332 23.6584473,9.2487793 Z" id="Path-85"></path>
             </g>
-            <g id="mo-9" transform="translate(242.000000, 403.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-9" transform="translate(242.000000, 403.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M21.2753906,16.9943848 C21.2753906,16.9943848 0.825683594,29.7468262 1.00048828,12.4887695 C1.17529297,-4.76928711 23.5925293,-3.25415039 23.7253418,14.8562012 C23.8581543,32.9665527 15.0620117,42.2172852 1.00048828,34.8569336" id="Path-86"></path>
             </g>
-            <g id="mo-0" transform="translate(297.000000, 404.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-0" transform="translate(297.000000, 404.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M12.2229004,0.0219726562 C26.848877,0.0219726562 29.3320738,35.6315931 12.6044922,35.8193359 C-4.12308938,36.0070788 -2.40307617,0.0219726562 12.2229004,0.0219726562 Z" id="Path-87"></path>
             </g>
-            <g id="mo-exclamation-mark" transform="translate(353.000000, 404.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-exclamation-mark" transform="translate(353.000000, 404.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.09643555,0.151123047 L1.09643555,20.9643555" id="Path-88"></path>
                 <path d="M1.02612305,32.3188477 L1.02612305,35.4121776" id="Path-89"></path>
             </g>
-            <g id="mo-question-mark" transform="translate(385.000000, 403.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-question-mark" transform="translate(385.000000, 403.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.696044922,3.03930664 C5.30249023,0.66015625 19.0620117,-2.3659668 19.0620117,6.31420898 C19.0620117,14.9943848 10.1835937,13.3579102 10.1835937,22.3186035" id="Path-90"></path>
                 <path d="M9.80810547,33.8654785 L9.80810547,37.3102732" id="Path-91"></path>
             </g>
-            <g id="mo-period" transform="translate(434.000000, 436.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-period" transform="translate(434.000000, 436.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.74853516,0.201416016 L1.74853516,3.35506888" id="Path-92"></path>
             </g>
-            <g id="mo-comma" transform="translate(468.000000, 436.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-comma" transform="translate(468.000000, 436.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M0.461181641,3.38427734 C0.461181641,3.38427734 1.7487793,-2.20776367 3.3815918,1.13208008 C5.0144043,4.47192383 5.37915039,9.01098633 2.41887049,12.9626465" id="Path-93"></path>
             </g>
-            <g id="mo-double-quote" transform="translate(503.000000, 404.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-double-quote" transform="translate(503.000000, 404.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.90258789,0.015625 L1.90258789,11.1462419" id="Path-94"></path>
                 <path d="M15.9025879,0.015625 L15.9025879,11.1462419" id="Path-94"></path>
             </g>
-            <g id="mo-apostrophe" transform="translate(544.000000, 406.000000)" stroke-width="8" stroke-linecap="square" stroke-linejoin="bevel">
+            <g id="mo-apostrophe" transform="translate(544.000000, 406.000000)" stroke-linecap="square" stroke-linejoin="bevel">
                 <path d="M1.74853516,0.201416016 L1.74853516,3.35506888" id="Path-92"></path>
             </g>
-            <circle id="OUTLIER" stroke-width="15" cx="531" cy="357" r="4.5"></circle>
+            <circle id="OUTLIER" cx="531" cy="357" r="8"></circle>
         </g>
     </g>
 </svg>

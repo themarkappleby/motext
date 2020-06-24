@@ -8,7 +8,116 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1 id="target">Welcome to motext.js</h1>
+  <div class="wrapper">
+    <div class="preview">
+      <h1 id="target">Welcome to motext.js</h1>
+    </div>
+    <div class="controls">
+      <div class="column">
+        <div class="field">
+          <label for="text" class="field-label">Text</label>
+          <input class="field-input" id="text" type="text" value="Welcome to motext.js">
+        </div>
+
+        <div class="field">
+          <label for="color" class="field-label">Main Color</label>
+          <input class="field-input" id="color" type="color" value="#000000">
+        </div>
+
+        <div class="field">
+          <label class="field-label">Colors</label>
+          <input class="field-input" id="color1" type="color" value="#0dafb7">
+          <input class="field-input" id="color2" type="color" value="#eabc36">
+          <input class="field-input" id="color3" type="color" value="#e154ed">
+          <input class="field-input" id="color4" type="color" value="#62d628">
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label for="revealProperty" class="field-label">Reveal Property</label>
+          <select class="field-input" id="revealProperty">
+            <option value="x">x</option>
+            <option value="y" selected="selected">y</option>
+            <option value="scale">scale</option>
+            <option value="opacity">opacity</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="revealAmount" class="field-label">Reveal Amount</label>
+          <input id="revealAmount" class="field-input" type="number" value="-6">
+        </div>
+
+        <div class="field">
+          <label for="revealDuration" class="field-label">Reveal Duration</label>
+          <input id="revealDuration" class="field-input" type="number" value="0.8">
+        </div>
+
+        <div class="field">
+          <label for="revealEase" class="field-label">Reveal Ease</label>
+          <select class="field-input" id="revealEase">
+            <option value="slow">slow</option>
+            <option value="elastic" selected="selected">elastic</option>
+            <option value="bounce">bounce</option>
+            <option value="power1">power1</option>
+            <option value="power4">power4</option>
+            <option value="none">none</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label for="storkeWidth" class="field-label">Stroke Width</label>
+          <input id="strokeWidth" class="field-input" type="number" value="8">
+        </div>
+
+        <div class="field">
+          <label for="storkeDuration" class="field-label">Stroke Duration</label>
+          <input id="strokeDuration" class="field-input" type="number" value="1">
+        </div>
+
+        <div class="field">
+          <label for="strokeEase" class="field-label">Stroke Ease</label>
+          <select class="field-input" id="strokeEase">
+            <option value="slow" selected="selected">slow</option>
+            <option value="elastic">elastic</option>
+            <option value="bounce">bounce</option>
+            <option value="power1">power1</option>
+            <option value="power4">power4</option>
+            <option value="none">none</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label for="offsetDuration" class="field-label">Offset Duration</label>
+          <input id="offsetDuration" class="field-input" type="number" value="0.15">
+        </div>
+
+        <div class="field">
+          <label for="staggerAmount" class="field-label">Stagger Amount</label>
+          <input id="staggerAmount" class="field-input" type="number" value="0.1">
+        </div>
+
+        <div class="field">
+          <label for="staggerEase" class="field-label">Stagger Ease</label>
+          <select class="field-input" id="staggerEase">
+            <option value="slow">slow</option>
+            <option value="elastic">elastic</option>
+            <option value="bounce">bounce</option>
+            <option value="power1">power1</option>
+            <option value="power4">power4</option>
+            <option value="none" selected="selected">none</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
   <object data="motext/motext.svg" data-font="motext" type="image/svg+xml"></object>
   <script src="motext/motext.js"></script>

@@ -7,6 +7,7 @@ const DEFAULT_OPTIONS = {
   revealAmount: -6,
   revealDuration: 0.8,
   revealEase: 'elastic',
+  strokeWidth: 8,
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,
@@ -96,7 +97,7 @@ function insertHTML (target, options) {
         } else if (ASCENDERS.includes(char)) {
           offset = 'ascend'
         }
-        html += openSVG(size.width + 10, size.height + 10, scale, offset)
+        html += openSVG(size.width + 10, size.height + 10, scale, offset, options)
         html += svgChar.outerHTML
         html += svgLayer.outerHTML
         html += '</g></svg>'
@@ -170,11 +171,11 @@ function revealCharacter (options) {
   }
 }
 
-function openSVG (width, height, scale, offset) {
+function openSVG (width, height, scale, offset, options) {
   let className = 'motext-letter'
   if (offset) {
     className += ` motext-letter--${offset}`
   }
   return `<svg class="${className}" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(4, 4)">`
+    <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
 }
