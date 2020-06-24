@@ -26,13 +26,16 @@ const SYMBOL_MAP = {
 
 const DESCENDERS = ['Q', 'g', 'j', 'p', 'q', 'y', ',']
 const ASCENDERS = ['"', '\'']
+let prepped = false
 
 function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
   const targets = document.querySelectorAll(selector)
   const timelines = []
   Array.from(targets).forEach(target => {
-    prepSVG(options)
+    if (!prepped) {
+      prepSVG(options)
+    }
     insertHTML(target, options)
     timelines.push(createTimeline(target, options))
   })
@@ -43,6 +46,7 @@ function prepSVG (options) {
   const font = svgContent().getElementById('motext')
   prepFontStyles(font, options)
   layerCharacters(font, options)
+  prepped = true
 }
 
 function svgContent () {
