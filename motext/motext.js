@@ -176,5 +176,5 @@ function openSVG (width, height, scale, offset) {
     className += ` motext-letter--${offset}`
   }
   return `<svg class="${className}" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(5, 5)">`
+    <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(4, 4)">`
 }
