@@ -18,7 +18,7 @@ const SYMBOL_MAP = {
   '!': 'exclamation-mark',
   '?': 'question-mark',
   '.': 'period',
-  ',': 'commma',
+  ',': 'comma',
   '"': 'double-quote'
 }
 
@@ -84,6 +84,10 @@ function insertHTML (target, options) {
       if (symbol) selector = '#mo-' + symbol
       const svgChar = svgContent().querySelector(selector)
       const svgLayer = svgContent().querySelector(selector + 'l')
+      if (symbol) {
+        console.log(selector)
+        console.log(svgChar)
+      }
       if (svgChar && svgLayer) {
         const size = svgChar.getBBox()
         html += openSVG(size.width + 10, size.height + 10, scale)
