@@ -131,6 +131,9 @@ function applyColors (target, options) {
     }
     color = options.colors[index]
   })
+  Array.from(target.querySelectorAll('.motext-solid')).forEach(char => {
+    char.setAttribute('stroke', options.color)
+  })
 }
 
 function createTimeline (target, options) {
