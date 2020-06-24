@@ -1,6 +1,4 @@
-/* global gsap fetch */
-
-let fetchPromise = null
+/* global gsap */
 
 const DEFAULT_OPTIONS = {
   color: '#000000',
@@ -16,41 +14,26 @@ const DEFAULT_OPTIONS = {
   staggerEase: 'none'
 }
 
-function motext (selector, cb, options = {}) { // eslint-disable-line no-unused-vars
+function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
-  loadSVG('/motext/motext.svg', () => {
-    const targets = document.querySelectorAll(selector)
-    Array.from(targets).forEach(target => {
-      prepSVG(options)
-      insertHTML(target, options)
-      cb(createTimeline(target, options))
-    })
+  const targets = document.querySelectorAll(selector)
+  const timelines = []
+  Array.from(targets).forEach(target => {
+    prepSVG(options)
+    insertHTML(target, options)
+    timelines.push(createTimeline(target, options))
   })
-}
-
-function loadSVG (path, cb) {
-  if (fetchPromise) {
-    fetchPromise.then(cb)
-  } else {
-    fetchPromise = fetch(path)
-      .then(response => response.text())
-      .then(text => {
-        const fontWrapper = document.createElement('div')
-        fontWrapper.innerHTML = text
-        fontWrapper.setAttribute('class', 'motext-font')
-        document.body.appendChild(fontWrapper)
-        cb()
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+  return timelines
 }
 
 function prepSVG (options) {
-  var font = document.querySelector('.motext-font #motext')
+  const font = svgContent().getElementById('motext')
   prepFontStyles(font, options)
   layerCharacters(font, options)
+}
+
+function svgContent () {
+  return document.querySelector('[data-font="motext"]').contentDocument
 }
 
 function prepFontStyles (font, options) {
@@ -59,9 +42,9 @@ function prepFontStyles (font, options) {
     char.removeAttribute('opacity')
     char.setAttribute('class', 'motext-colored')
 
-    var strokes = Array.from(char.children)
+    const strokes = Array.from(char.children)
     strokes.forEach(stroke => {
-      var length = stroke.getTotalLength() + 1
+      const length = stroke.getTotalLength() + 1
       stroke.style.strokeDasharray = length
       stroke.style.strokeDashoffset = length
     })
@@ -87,8 +70,8 @@ function insertHTML (target, options) {
     if (char === ' ') {
       html += '</span><span class="motext-word">'
     } else {
-      const svgChar = document.querySelector('#' + char)
-      const svgLayer = document.querySelector('#' + char + 'l')
+      const svgChar = svgContent().querySelector('#' + char)
+      const svgLayer = svgContent().querySelector('#' + char + 'l')
       const size = svgChar.getBBox()
       html += openSVG(size.width + 10, size.height + 10, scale)
       html += svgChar.outerHTML
@@ -121,7 +104,7 @@ function applyColors (target, options) {
 
 function createTimeline (target, options) {
   const colored = target.querySelectorAll('.motext-colored path, .motext-colored polyline')
-  var tl = gsap.timeline()
+  const tl = gsap.timeline()
   tl.to(colored, {
     duration: options.strokeDuration,
     ease: options.strokeEase,
