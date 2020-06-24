@@ -65,6 +65,7 @@ body, html {
 
 input[type="text"],
 input[type="number"],
+button,
 select {
   padding: 5px;
   font-size: 18px;
@@ -85,4 +86,23 @@ input[type="color"] {
 #text {
   font-size: 24px;
   padding: 8px;
+}
+
+#replay {
+  font-size: 16px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+#replay:hover {
+  background: black;
+}
+
+#replay:focus {
+  outline: 0;
 }
