@@ -14,6 +14,14 @@ const DEFAULT_OPTIONS = {
   staggerEase: 'none'
 }
 
+const SYMBOL_MAP = {
+  '!': 'exclamation-mark',
+  '?': 'question-mark',
+  '.': 'period',
+  ',': 'commma',
+  '"': 'double-quote'
+}
+
 function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
   const targets = document.querySelectorAll(selector)
@@ -37,6 +45,7 @@ function svgContent () {
 }
 
 function prepFontStyles (font, options) {
+  const STROKE_LENGTH_BUFFER = 8
   Array.from(font.children).forEach(char => {
     char.removeAttribute('transform')
     char.removeAttribute('opacity')
@@ -44,7 +53,7 @@ function prepFontStyles (font, options) {
 
     const strokes = Array.from(char.children)
     strokes.forEach(stroke => {
-      const length = stroke.getTotalLength() + 1
+      const length = stroke.getTotalLength() + STROKE_LENGTH_BUFFER
       stroke.style.strokeDasharray = length
       stroke.style.strokeDashoffset = length
     })
@@ -70,13 +79,20 @@ function insertHTML (target, options) {
     if (char === ' ') {
       html += '</span><span class="motext-word">'
     } else {
-      const svgChar = svgContent().querySelector('#' + char)
-      const svgLayer = svgContent().querySelector('#' + char + 'l')
-      const size = svgChar.getBBox()
-      html += openSVG(size.width + 10, size.height + 10, scale)
-      html += svgChar.outerHTML
-      html += svgLayer.outerHTML
-      html += '</g></svg>'
+      const symbol = SYMBOL_MAP[char]
+      let selector = '#mo-' + char
+      if (symbol) selector = '#mo-' + symbol
+      const svgChar = svgContent().querySelector(selector)
+      const svgLayer = svgContent().querySelector(selector + 'l')
+      if (svgChar && svgLayer) {
+        const size = svgChar.getBBox()
+        html += openSVG(size.width + 10, size.height + 10, scale)
+        html += svgChar.outerHTML
+        html += svgLayer.outerHTML
+        html += '</g></svg>'
+      } else {
+        console.warn(`motext.js does not support the character "${char}". This character has been omitted.`)
+      }
     }
   })
   html += '</span></span>'
@@ -146,5 +162,5 @@ function revealCharacter (options) {
 
 function openSVG (width, height, scale) {
   return `<svg class="motext-letter" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g class="motext-letterInner" stroke-width="10" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(5, 5)">`
+    <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(5, 5)">`
 }
