@@ -3,7 +3,7 @@ body, html {
   box-sizing: border-box;
 }
 
-#singleTarget {
+#target {
   text-align: center;
   font-size: 48px;
   position: absolute;

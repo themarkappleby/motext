@@ -1,5 +1,5 @@
 /* global motext */
 
 window.addEventListener('load', () => {
-  motext('#singleTarget')[0].play()
+  motext('#target')[0].play()
 })

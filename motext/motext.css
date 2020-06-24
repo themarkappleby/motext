@@ -18,6 +18,10 @@
   margin-bottom: -0.22em;
 }
 
+.motext-letter--ascend {
+  vertical-align: top;
+}
+
 [data-font="motext"] {
   position: absolute;
   top: -9999px;
