@@ -1,5 +1,5 @@
 {
-  "name": "animated-type",
+  "name": "motext",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/themarkappleby/animated-type.git"
+    "url": "git+https://github.com/themarkappleby/motext.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/themarkappleby/animated-type/issues"
+    "url": "https://github.com/themarkappleby/motext/issues"
   },
-  "homepage": "https://github.com/themarkappleby/animated-type#readme",
+  "homepage": "https://github.com/themarkappleby/motext#readme",
   "devDependencies": {
     "http-server": "^0.12.3"
   }
