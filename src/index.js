@@ -1,4 +1,5 @@
 /* global motext */
+let tl = null
 
 const options = {
   color: '#000000',
@@ -18,6 +19,10 @@ const options = {
 window.addEventListener('load', () => {
   document.getElementById('target').style.opacity = 1
   play()
+})
+
+document.getElementById('replay').addEventListener('click', () => {
+  tl.play(0)
 })
 
 Array.from(document.querySelectorAll('.controls input, .controls select')).forEach(input => {
@@ -43,5 +48,6 @@ Array.from(document.querySelectorAll('.controls input, .controls select')).forEa
 
 function play () {
   document.getElementById('target').innerHTML = document.querySelector('#text').value
-  motext('#target', options)[0].play()
+  tl = motext('#target', options)[0]
+  tl.play()
 }
