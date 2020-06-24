@@ -4,14 +4,6 @@
 __metadata:
   version: 4
 
-"motext@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "motext@workspace:."
-  dependencies:
-    http-server: ^0.12.3
-  languageName: unknown
-  linkType: soft
-
 "async@npm:^2.6.2":
   version: 2.6.3
   resolution: "async@npm:2.6.3"
@@ -153,6 +145,14 @@ __metadata:
   checksum: 2feda58ba711f4a8e3eb377b24f44f273b78d19361033894292b677b1d50d6dd926a4c2c06213a78dead4196efca06e4fe4aa3ad0173faa19924f1197a924fdb
   languageName: node
   linkType: hard
+
+"motext@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "motext@workspace:."
+  dependencies:
+    http-server: ^0.12.3
+  languageName: unknown
+  linkType: soft
 
 "ms@npm:^2.1.1":
   version: 2.1.2
