@@ -31,6 +31,8 @@ Array.from(document.querySelectorAll('.controls input, .controls select')).forEa
     const val = e.target.value
     if (id === 'text') {
       document.getElementById('target').innerHTML = e.target.value
+    } else if (id === 'fontSize') {
+      document.getElementById('target').style.fontSize = val
     } else if (id === 'color1') {
       options.colors[0] = val
     } else if (id === 'color2') {
