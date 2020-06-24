@@ -14,7 +14,7 @@
   margin-right: 0.15em;
 }
 
-.motext-font {
+[data-font="motext"] {
   position: absolute;
   top: -9999px;
   left: -9999px;

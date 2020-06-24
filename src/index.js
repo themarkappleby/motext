@@ -1,3 +1,5 @@
 /* global motext */
 
-motext('#singleTarget', tl => tl.play())
+window.addEventListener('load', () => {
+  motext('#singleTarget')[0].play()
+})
