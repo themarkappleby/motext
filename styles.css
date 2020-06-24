@@ -77,3 +77,12 @@ select {
 input[type="number"] {
   width: 80px;
 }
+
+input[type="color"] {
+  height: 30px;
+}
+
+#text {
+  font-size: 24px;
+  padding: 8px;
+}
