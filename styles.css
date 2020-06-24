@@ -42,9 +42,13 @@ body, html {
 }
 
 .column {
-  width: 18%;
+  width: 25%;
   padding: 0 30px;
   border-right: 2px solid #363636;
+}
+
+.column:last-child {
+  border-right: 0;
 }
 
 .field {

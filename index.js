@@ -20,16 +20,23 @@ window.addEventListener('load', () => {
   play()
 })
 
-document.querySelector('#text').addEventListener('change', e => {
-  document.getElementById('target').innerHTML = e.target.value
-  play()
-})
-
 Array.from(document.querySelectorAll('.controls input, .controls select')).forEach(input => {
   input.addEventListener('change', e => {
     const id = e.target.id
     const val = e.target.value
-    options[id] = val
+    if (id === 'text') {
+      document.getElementById('target').innerHTML = e.target.value
+    } else if (id === 'color1') {
+      options.colors[0] = val
+    } else if (id === 'color2') {
+      options.colors[1] = val
+    } else if (id === 'color3') {
+      options.colors[2] = val
+    } else if (id === 'color4') {
+      options.colors[3] = val
+    } else {
+      options[id] = val
+    }
     play()
   })
 })
