@@ -22,6 +22,8 @@ const SYMBOL_MAP = {
   '"': 'double-quote'
 }
 
+const DESCENDERS = ['Q', 'g', 'j', 'p', 'q', 'y']
+
 function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
   const targets = document.querySelectorAll(selector)
@@ -84,13 +86,10 @@ function insertHTML (target, options) {
       if (symbol) selector = '#mo-' + symbol
       const svgChar = svgContent().querySelector(selector)
       const svgLayer = svgContent().querySelector(selector + 'l')
-      if (symbol) {
-        console.log(selector)
-        console.log(svgChar)
-      }
       if (svgChar && svgLayer) {
         const size = svgChar.getBBox()
-        html += openSVG(size.width + 10, size.height + 10, scale)
+        const descend = DESCENDERS.includes(char)
+        html += openSVG(size.width + 10, size.height + 10, scale, descend)
         html += svgChar.outerHTML
         html += svgLayer.outerHTML
         html += '</g></svg>'
@@ -164,7 +163,11 @@ function revealCharacter (options) {
   }
 }
 
-function openSVG (width, height, scale) {
-  return `<svg class="motext-letter" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+function openSVG (width, height, scale, descend) {
+  let className = 'motext-letter'
+  if (descend) {
+    className += ' motext-letter--descend'
+  }
+  return `<svg class="${className}" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(5, 5)">`
 }

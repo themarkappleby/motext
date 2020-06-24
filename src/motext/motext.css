@@ -6,12 +6,16 @@
   white-space: nowrap;
   display: inline-block;
   vertical-align: bottom;
-  margin-right: 0.7em;
+  margin-right: 0.4em;
   margin-bottom: 0.4em;
 }
 
 .motext-letter {
-  margin-right: 0.15em;
+  margin-right: 0.04em;
+}
+
+.motext-letter--descend {
+  margin-bottom: -0.22em;
 }
 
 [data-font="motext"] {
