@@ -4,8 +4,10 @@ body, html {
 }
 
 #target {
+  opacity: 0;
   text-align: center;
   font-size: 48px;
+  font-size: 80px;
   position: absolute;
   margin: 0;
   top: 40%;
