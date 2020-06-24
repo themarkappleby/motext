@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
 })
 
 document.getElementById('replay').addEventListener('click', () => {
-  tl.play(0)
+  play()
 })
 
 Array.from(document.querySelectorAll('.controls input, .controls select')).forEach(input => {
