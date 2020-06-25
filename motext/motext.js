@@ -1,4 +1,4 @@
-/* global gsap */
+/* global gsap Node HTMLElement, NodeList */
 
 const DEFAULT_OPTIONS = {
   color: '#000000',
@@ -26,20 +26,23 @@ const SYMBOL_MAP = {
 
 const DESCENDERS = ['Q', 'g', 'j', 'p', 'q', 'y', ',']
 const ASCENDERS = ['"', '\'']
+const instances = []
 let prepped = false
 
-function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
+function motext (el, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
   const timelines = []
-  const targets = document.querySelectorAll(selector)
-  Array.from(targets).forEach(target => {
+  const collection = getElementCollection(el)
+  collection.forEach(target => {
     if (!prepped) {
       prepSVG(options)
     }
     insertHTML(target, options)
     timelines.push(createTimeline(target, options))
   })
-  return {
+  const instance = {
+    el,
+    options,
     timelines,
     play: function () {
       this.timelines.forEach(tl => {
@@ -47,7 +50,13 @@ function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
       })
     }
   }
+  instances.push(instance)
+  return instance
 }
+
+window.addEventListener('resize', e => {
+  console.log(e)
+})
 
 function prepSVG (options) {
   const font = svgContent().getElementById('motext')
@@ -192,4 +201,37 @@ function openSVG (width, height, scale, offset, options) {
   }
   return `<svg class="${className}" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
+}
+
+function getElementCollection (el) {
+  if (typeof el === 'string') {
+    el = document.querySelectorAll(el)
+    return Array.from(el)
+  } else if (isNodeList(el)) {
+    return Array.from(el)
+  } else if (isNode(el) || isElement(el)) {
+    return [el]
+  } else {
+    return []
+  }
+}
+
+function isNode (el) {
+  // ref: https://stackoverflow.com/a/384380/918060
+  return (
+    typeof Node === 'object' ? el instanceof Node
+      : el && typeof el === 'object' && typeof el.nodeType === 'number' && typeof el.nodeName === 'string'
+  )
+}
+
+function isElement (el) {
+  return (
+    typeof HTMLElement === 'object' ? el instanceof HTMLElement
+      : el && typeof el === 'object' && el !== null && el.nodeType === 1 && typeof el.nodeName === 'string'
+  )
+}
+
+function isNodeList (el) {
+  // ref: https://stackoverflow.com/a/36857902/918060
+  return NodeList.prototype.isPrototypeOf(el) // eslint-disable-line
 }
