@@ -2,14 +2,45 @@
 
 motext.js is a simple to use Javascript SVG text animation library. The quickest way to see exactly what you can do with it is to [try out the motext.js editor](https://themarkappleby.github.io/motext/).
 
-## Getting started
+## Quick Overview
 
-Add motext.js as a dependancy to your project:
+```html
+<!-- Add an element with some text -->
+<h1 id="target">Hello World</h1>
 
-`npm install motext --save` or `yarn add motext`
+<!-- Load Greensock (this is a dependancy of motext) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
 
-In your HTML, simply add an element with some text:
-`<h1 id="myText">My Site Title</h1>`
+<!-- Load motext -->
+<script src="https://unpkg.com/motext@1.2.0/dist/motext.js"></script>
 
-And then tell motext.js to transform that text in SVG and play the animation:
-`motext('#myText', options).play()`
+<script type="text/javascript">
+  // Load the motext font
+  motext.loadFont('https://unpkg.com/motext@1.2.0/dist/fonts/motext.svg').then(() => {
+    // Initialize and play the motext animation
+    motext.init('#target').play()
+  })
+</script>
+```
+
+## Getting Started
+
+Though you can import motext via CDN like in the example above, most users will likely want to bring in motext as a project dependancy which you can do via `npm install motext --save` for NPM or `yarn add motext` for Yarn.
+
+You can then import motext with `import motext from 'motext'` in your Javascript.
+
+## Methods
+
+### loadFont(path)
+
+**path**: A string path to a motext SVG font. At the moment there is only the single font but in theory more fonts could be added in the future. This method returns a promise that will resolve once the font has been loaded and injected into the DOM.
+
+### init(element, options | optional)
+
+The init methods takes two paramaters with the second one being optional.
+
+**element**: Either a string in the form of a CSS selector or an actual DOM element(s)/NodeList. For example, the following would all be valid: `'.target'`, `'#target'`, `document.getElementById('#target')`, or `document.querySelectorAll('#target')`.
+
+**options**: An object specifiying the paramaters that motext should apply. See below for more details or [try out the motext.js editor](https://themarkappleby.github.io/motext/).
+
+**Documentation Under Construction**
