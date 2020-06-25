@@ -1,5 +1,4 @@
 /* global motext */
-let tl = null
 
 const options = {
   color: '#000000',
@@ -49,6 +48,8 @@ Array.from(document.querySelectorAll('.controls input, .controls select')).forEa
 })
 
 function play () {
-  document.getElementById('target').innerHTML = document.querySelector('#text').value
-  motext('#target', options).play()
+  const el = document.getElementById('target')
+  const previewText = document.querySelector('#text').value
+  el.innerHTML = previewText
+  motext(el, options).play()
 }
