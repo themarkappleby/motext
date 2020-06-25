@@ -14,12 +14,10 @@ body, html {
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
-  background: red;
 }
 
 @media (max-width: 700px) {
   #target {
-    background: blue;
     font-size: 40px;
   }
 }
@@ -54,6 +52,8 @@ body, html {
   padding: 20px 15px;
   background: #404040;
   border-radius: 4px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .column {
