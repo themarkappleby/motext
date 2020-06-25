@@ -2,6 +2,8 @@
 
 motext.js is a simple to use Javascript SVG text animation library. The quickest way to see exactly what you can do with it is to [try out the motext.js editor](https://themarkappleby.github.io/motext/).
 
+![motext editor](motext-editor.jpg)
+
 ## Quick Overview
 
 ```html
