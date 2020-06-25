@@ -1,12 +1,10 @@
 {
   "name": "motext",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Javascript and SVG text animation library",
+  "main": "dist/motext.js",
   "scripts": {
-    "start": "http-server ./src -c-1",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gh-pages": "git subtree push --prefix src origin gh-pages"
+    "start": "http-server -c-1"
   },
   "publishConfig": {
     "access": "public"
@@ -15,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/themarkappleby/motext.git"
   },
-  "author": "",
+  "author": "Mark Appleby",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/themarkappleby/motext/issues"
@@ -23,5 +21,8 @@
   "homepage": "https://github.com/themarkappleby/motext#readme",
   "devDependencies": {
     "http-server": "^0.12.3"
+  },
+  "dependencies": {
+    "gsap": "^3.3.4"
   }
 }

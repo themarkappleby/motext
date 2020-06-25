@@ -71,6 +71,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gsap@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "gsap@npm:3.3.4"
+  checksum: 3eeae30b475a4495737304329452b76fe8588d738e729ffa71483134c4a062f047b3de04531c758e238833e7b30f900ea38bc9b72bbcaf5bae3508707cfa84c2
+  languageName: node
+  linkType: hard
+
 "he@npm:^1.1.1":
   version: 1.2.0
   resolution: "he@npm:1.2.0"
@@ -150,6 +157,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "motext@workspace:."
   dependencies:
+    gsap: ^3.3.4
     http-server: ^0.12.3
   languageName: unknown
   linkType: soft
