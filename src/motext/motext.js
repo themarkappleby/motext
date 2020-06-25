@@ -37,6 +37,7 @@ function motext (el, options = {}) { // eslint-disable-line no-unused-vars
     if (!prepped) {
       prepSVG(options)
     }
+    target.setAttribute('aria-label', target.textContent)
     insertHTML(target, options)
     timelines.push(createTimeline(target, options))
   })
