@@ -22,7 +22,7 @@
   vertical-align: top;
 }
 
-[data-font="motext"] {
+.motext-font {
   position: absolute;
   top: -9999px;
   left: -9999px;

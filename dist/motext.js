@@ -1,4 +1,4 @@
-/* global gsap Node HTMLElement, NodeList, define, self */
+/* global gsap fetch Node HTMLElement, NodeList, define, self */
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -10,6 +10,7 @@
   }
 }(typeof self !== 'undefined' ? self : this, function () {
   const DEFAULT_OPTIONS = {
+    font: '/dist/motext.svg',
     color: '#000000',
     colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
     revealProperty: 'y',
@@ -37,8 +38,28 @@
   const ASCENDERS = ['"', '\'']
   const instances = []
   let prepped = false
+  let fetchPromise = null
 
-  function motext (el, options = {}) { // eslint-disable-line no-unused-vars
+  function loadFont (path) {
+    if (fetchPromise) {
+      return fetchPromise
+    } else {
+      fetchPromise = fetch(path)
+        .then(response => response.text())
+        .then(text => {
+          const fontWrapper = document.createElement('div')
+          fontWrapper.innerHTML = text
+          fontWrapper.setAttribute('class', 'motext-font')
+          document.body.appendChild(fontWrapper)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+      return fetchPromise
+    }
+  }
+
+  function init (el, options = {}) { // eslint-disable-line no-unused-vars
     options = { ...DEFAULT_OPTIONS, ...options }
     const timelines = []
     const collection = getElementCollection(el)
@@ -77,14 +98,10 @@
   })
 
   function prepSVG (options) {
-    const font = svgContent().getElementById('motext')
+    const font = document.getElementById('motext')
     prepFontStyles(font, options)
     layerCharacters(font, options)
     prepped = true
-  }
-
-  function svgContent () {
-    return document.querySelector('[data-font="motext"]').contentDocument
   }
 
   function prepFontStyles (font, options) {
@@ -120,10 +137,10 @@
         html += '</span><span class="motext-word">'
       } else {
         const symbol = SYMBOL_MAP[char]
-        let selector = '#mo-' + char
-        if (symbol) selector = '#mo-' + symbol
-        const svgChar = svgContent().querySelector(selector)
-        const svgLayer = svgContent().querySelector(selector + 'l')
+        let selector = 'mo-' + char
+        if (symbol) selector = 'mo-' + symbol
+        const svgChar = document.getElementById(selector)
+        const svgLayer = document.getElementById(selector + 'l')
         if (svgChar && svgLayer) {
           const size = svgChar.getBBox()
           let offset = ''
@@ -265,5 +282,8 @@
     return NodeList.prototype.isPrototypeOf(el) // eslint-disable-line
   }
 
-  return motext
+  return {
+    loadFont,
+    init
+  }
 }))

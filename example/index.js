@@ -14,11 +14,17 @@ const options = {
   staggerAmount: 0.1,
   staggerEase: 'none'
 }
-
-window.addEventListener('load', () => {
+motext.loadFont('/dist/motext.svg').then(() => {
   document.getElementById('target').style.opacity = 1
   play()
 })
+
+function play () {
+  const el = document.getElementById('target')
+  const previewText = document.querySelector('#text').value
+  el.innerHTML = previewText
+  motext.init(el, options).play()
+}
 
 document.getElementById('replay').addEventListener('click', () => {
   play()
@@ -46,10 +52,3 @@ Array.from(document.querySelectorAll('.controls input, .controls select')).forEa
     play()
   })
 })
-
-function play () {
-  const el = document.getElementById('target')
-  const previewText = document.querySelector('#text').value
-  el.innerHTML = previewText
-  motext(el, options).play()
-}
