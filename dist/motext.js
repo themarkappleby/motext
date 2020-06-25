@@ -10,8 +10,6 @@
   }
 }(typeof self !== 'undefined' ? self : this, function () {
   const DEFAULT_OPTIONS = {
-    font: '/dist/motext.svg',
-    color: '#000000',
     colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
     revealProperty: 'y',
     revealAmount: -6,
