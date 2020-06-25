@@ -30,8 +30,8 @@ let prepped = false
 
 function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
   options = { ...DEFAULT_OPTIONS, ...options }
-  const targets = document.querySelectorAll(selector)
   const timelines = []
+  const targets = document.querySelectorAll(selector)
   Array.from(targets).forEach(target => {
     if (!prepped) {
       prepSVG(options)
@@ -39,7 +39,14 @@ function motext (selector, options = {}) { // eslint-disable-line no-unused-vars
     insertHTML(target, options)
     timelines.push(createTimeline(target, options))
   })
-  return timelines
+  return {
+    timelines,
+    play: function () {
+      this.timelines.forEach(tl => {
+        tl.play()
+      })
+    }
+  }
 }
 
 function prepSVG (options) {

@@ -50,6 +50,5 @@ Array.from(document.querySelectorAll('.controls input, .controls select')).forEa
 
 function play () {
   document.getElementById('target').innerHTML = document.querySelector('#text').value
-  tl = motext('#target', options)[0]
-  tl.play()
+  motext('#target', options).play()
 }
