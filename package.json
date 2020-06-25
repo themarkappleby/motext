@@ -1,6 +1,6 @@
 {
   "name": "motext",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Javascript and SVG text animation library",
   "main": "dist/motext.js",
   "scripts": {
