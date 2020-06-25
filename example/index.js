@@ -14,7 +14,7 @@ const options = {
   staggerAmount: 0.1,
   staggerEase: 'none'
 }
-motext.loadFont('/dist/motext.svg').then(() => {
+motext.loadFont('/dist/fonts/motext.svg').then(() => {
   document.getElementById('target').style.opacity = 1
   play()
 })
