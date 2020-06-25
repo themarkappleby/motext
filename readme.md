@@ -1,3 +1,3 @@
-# motext.js
+![motext.js](motext.gif)
 
 Welcome
