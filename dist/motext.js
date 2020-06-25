@@ -18,6 +18,8 @@
     revealDuration: 0.8,
     revealEase: 'elastic',
     strokeWidth: 8,
+    strokeLinecap: 'square',
+    strokeLinejoin: 'bevel',
     strokeDuration: 1,
     strokeEase: 'slow',
     offsetDuration: 0.15,
@@ -110,6 +112,9 @@
     Array.from(font.children).forEach(char => {
       char.removeAttribute('transform')
       char.removeAttribute('opacity')
+      char.removeAttribute('stroke-linecap')
+      char.removeAttribute('stroke-linejoin')
+      char.removeAttribute('stroke-width')
       char.setAttribute('class', 'motext-colored')
 
       const strokes = Array.from(char.children)
@@ -247,7 +252,7 @@
       className += ` motext-letter--${offset}`
     }
     return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
+      <g class="motext-letterInner" stroke-linecap="${options.strokeLinecap}" stroke-linejoin="${options.strokeLinejoin}" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
   }
 
   function getElementCollection (el) {

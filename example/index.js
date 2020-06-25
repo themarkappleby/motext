@@ -8,6 +8,8 @@ const options = {
   revealDuration: 0.8,
   revealEase: 'elastic',
   strokeWidth: 8,
+  strokeLinecap: 'square',
+  strokeLinejoin: 'bevel',
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,
