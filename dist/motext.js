@@ -51,6 +51,7 @@
           fontWrapper.innerHTML = text
           fontWrapper.setAttribute('class', 'motext-font')
           document.body.appendChild(fontWrapper)
+          addStyles()
         })
         .catch(err => {
           console.error(err)
@@ -280,6 +281,46 @@
   function isNodeList (el) {
     // ref: https://stackoverflow.com/a/36857902/918060
     return NodeList.prototype.isPrototypeOf(el) // eslint-disable-line
+  }
+
+  function addStyles () {
+    const style = document.createElement('style')
+    document.head.append(style)
+    style.textContent = `
+      .motext {
+        display: inline-block;
+      }
+
+      .motext-word {
+        white-space: nowrap;
+        display: inline-block;
+        vertical-align: bottom;
+        margin-right: 0.4em;
+        margin-bottom: 0.4em;
+      }
+
+      .motext-letter {
+        margin-right: 0.04em;
+      }
+
+      .motext-letter--descend {
+        margin-bottom: -0.22em;
+      }
+
+      .motext-letter--ascend {
+        vertical-align: top;
+      }
+
+      .motext-font {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+      }
+    `
   }
 
   return {
