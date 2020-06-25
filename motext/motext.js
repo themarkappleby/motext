@@ -60,16 +60,11 @@ window.addEventListener('resize', e => {
     instance.collection.forEach(target => {
       const fontSize = getFontSize(target)
       if (fontSize !== target.fontSize) {
-        target.fontSize = fontSize
-        resize(target)
+        applyFontSize(target, fontSize)
       }
     })
   })
 })
-
-function resize (target) {
-  console.log(target)
-}
 
 function prepSVG (options) {
   const font = svgContent().getElementById('motext')
@@ -109,9 +104,6 @@ function layerCharacters (font, options) {
 }
 
 function insertHTML (target, options) {
-  const BASE_SVG_FONT_SIZE = 55
-  const fontSize = getFontSize(target)
-  const scale = fontSize / BASE_SVG_FONT_SIZE
   let html = '<span class="motext"><span class="motext-word">'
   target.textContent.split('').forEach(char => {
     if (char === ' ') {
@@ -130,7 +122,7 @@ function insertHTML (target, options) {
         } else if (ASCENDERS.includes(char)) {
           offset = 'ascend'
         }
-        html += openSVG(size.width + 10, size.height + 10, scale, offset, options)
+        html += openSVG(size.width + 10, size.height + 10, offset, options)
         html += svgChar.outerHTML
         html += svgLayer.outerHTML
         html += '</g></svg>'
@@ -141,14 +133,9 @@ function insertHTML (target, options) {
   })
   html += '</span></span>'
   target.innerHTML = html
-  target.fontSize = fontSize
   applyColors(target, options)
-}
-
-function getFontSize (target) {
-  let fontSize = window.getComputedStyle(target, null).getPropertyValue('font-size')
-  fontSize = parseFloat(fontSize)
-  return fontSize
+  const fontSize = getFontSize(target)
+  applyFontSize(target, fontSize)
 }
 
 function applyColors (target, options) {
@@ -163,6 +150,24 @@ function applyColors (target, options) {
   })
   Array.from(target.querySelectorAll('.motext-solid')).forEach(char => {
     char.setAttribute('stroke', options.color)
+  })
+}
+
+function getFontSize (target) {
+  let fontSize = window.getComputedStyle(target, null).getPropertyValue('font-size')
+  fontSize = parseFloat(fontSize)
+  return fontSize
+}
+
+function applyFontSize (target, fontSize) {
+  target.fontSize = fontSize
+  const BASE_SVG_FONT_SIZE = 55
+  const scale = fontSize / BASE_SVG_FONT_SIZE
+  Array.from(target.querySelectorAll('.motext-letter')).forEach(letter => {
+    const width = letter.getAttribute('data-base-width')
+    const height = letter.getAttribute('data-base-height')
+    letter.setAttribute('width', width * scale + 'px')
+    letter.setAttribute('height', height * scale + 'px')
   })
 }
 
@@ -208,12 +213,12 @@ function revealCharacter (options) {
   }
 }
 
-function openSVG (width, height, scale, offset, options) {
+function openSVG (width, height, offset, options) {
   let className = 'motext-letter'
   if (offset) {
     className += ` motext-letter--${offset}`
   }
-  return `<svg class="${className}" width="${width * scale}px" height="${height * scale}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g class="motext-letterInner" stroke-linecap="square" stroke-linejoin="bevel" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
 }
 
