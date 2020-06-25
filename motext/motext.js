@@ -42,6 +42,7 @@ function motext (el, options = {}) { // eslint-disable-line no-unused-vars
   })
   const instance = {
     el,
+    collection,
     options,
     timelines,
     play: function () {
@@ -55,8 +56,20 @@ function motext (el, options = {}) { // eslint-disable-line no-unused-vars
 }
 
 window.addEventListener('resize', e => {
-  console.log(e)
+  instances.forEach(instance => {
+    instance.collection.forEach(target => {
+      const fontSize = getFontSize(target)
+      if (fontSize !== target.fontSize) {
+        target.fontSize = fontSize
+        resize(target)
+      }
+    })
+  })
 })
+
+function resize (target) {
+  console.log(target)
+}
 
 function prepSVG (options) {
   const font = svgContent().getElementById('motext')
@@ -128,6 +141,7 @@ function insertHTML (target, options) {
   })
   html += '</span></span>'
   target.innerHTML = html
+  target.fontSize = fontSize
   applyColors(target, options)
 }
 
