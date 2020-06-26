@@ -116,6 +116,23 @@ Default: `0.1`
 The easing to apply when sequencing the character animations. See the [GreenSock easing documentation](https://greensock.com/docs/v3/Eases) for the full list of supported easing methods.
 Default: `'none'`
 
+## Changing the Font Size and Spacing
+
+The motext font size corresponds with whatever font size you apply to your target element via CSS. Motext also accounts for media queires with regards to font-size with a built-in window resize listener. You can also change various font spacing properties via CSS (default values are listed below):
+
+```
+.motext-word {
+  margin-right: 0.4em; /* controls space between words */
+  margin-bottom: 0.4em; /* controls line-height */
+}
+.motext-letter {
+  margin-right: 0.04em; /* controls letter-spacing */
+}
+.motext-letter--descend {
+  margin-bottom: -0.22em; /* controls how far character with descenders (like j, p and q) drop */
+}
+```
+
 ## Changing the Font
 
 At the moment, motext only comes with a single font, which can be found in `/dist/fonts/motext.svg`. You can edit this SVG directly to change the look of the typeface. There is also a [Sketch](https://www.sketch.com/) file that can be found in `/sketch/motext.sketch` which you can use to alter the typeface. If you do create a new typeface, please consider adding it back to this project with a pull request.
