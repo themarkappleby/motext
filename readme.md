@@ -14,11 +14,11 @@ motext.js is a simple to use Javascript SVG text animation library. The quickest
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
 
 <!-- Load motext -->
-<script src="https://unpkg.com/motext@1.2.0/dist/motext.js"></script>
+<script src="https://unpkg.com/motext@1.3.1/dist/motext.js"></script>
 
 <script type="text/javascript">
   // Load the motext font
-  motext.loadFont('https://unpkg.com/motext@1.2.0/dist/fonts/motext.svg').then(() => {
+  motext.loadFont('https://unpkg.com/motext@1.3.1/dist/fonts/motext.svg').then(() => {
     // Initialize and play the motext animation
     // Optionally pass in some paramaters
     motext.init('#target', {
@@ -60,7 +60,7 @@ The init method returns an instance of motext with the following struture:
 
 ## Options
 
-### color 
+### color
 The main text color. This is the color that the text will display in once the animation has completed.
 Default: `#000000'`
 
@@ -120,6 +120,6 @@ Default: `'none'`
 
 At the moment, motext only comes with a single font, which can be found in `/dist/fonts/motext.svg`. You can edit this SVG directly to change the look of the typeface. There is also a [Sketch](https://www.sketch.com/) file that can be found in `/sketch/motext.sketch` which you can use to alter the typeface. If you do create a new typeface, please consider adding it back to this project with a pull request.
 
-The motext typeface supports a subset of characters. These include: `A-Z a-z 0-9 ! ? . , " '`. If your text contains a character not found in that list, motext will omitted the character(s) and display a warning in the console. Support for additional characters can be added by altering motext.svg as noted above. 
+The motext typeface supports a subset of characters. These include: `A-Z a-z 0-9 ! ? . , " '`. If your text contains a character not found in that list, motext will omitted the character(s) and display a warning in the console. Support for additional characters can be added by altering motext.svg as noted above.
 
 Unfortuantely you cannot load any typeface into motext. The reason for this is that motext works on the assumption that each character is made up of one ore more strokes rather than filled shapes which traditional typefaces use.
