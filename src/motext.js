@@ -280,7 +280,7 @@ return NodeList.prototype.isPrototypeOf(el) // eslint-disable-line
 
 function addStyles () {
   const style = document.createElement('style')
-  document.head.append(style)
+  document.head.prepend(style)
   style.textContent = `
   .motext {
     display: inline-block;
