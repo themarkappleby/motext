@@ -262,7 +262,6 @@
     if (character) {
       className += ` motext-letter--${character}`;
     }
-    console.log('character', character);
     return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g class="motext-letterInner" stroke-linecap="${options.strokeLinecap}" stroke-linejoin="${options.strokeLinejoin}" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
   }
