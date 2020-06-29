@@ -76,9 +76,11 @@
       options,
       timelines,
       play: function () {
+        const promises = [];
         this.timelines.forEach(tl => {
-          tl.play();
+          promises.push(tl.play());
         });
+        return Promise.all(promises)
       }
     };
     instances.push(instance);

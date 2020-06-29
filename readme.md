@@ -54,7 +54,7 @@ The init method returns an instance of motext with the following struture:
   collection: [Array] The above element(s) seperated into a JS array.
   options: [Object] The options object you originally passed into the init method.
   timelines: [Array] An array of GreenSock timelines (one for each item in the collection).
-  play: [Function] A method which plays all timelines in the timelines array when invoked.
+  play: [Function] A method which plays all timelines in the timelines array when invoked. This method returns a promise that resolves once the motext animation has completed.
 }
 ```
 
