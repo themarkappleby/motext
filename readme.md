@@ -20,7 +20,7 @@ motext.js is a simple to use Javascript SVG text animation library. The quickest
   // Load the motext font
   motext.loadFont('https://unpkg.com/motext@1.3.1/dist/fonts/motext.svg').then(() => {
     // Initialize and play the motext animation
-    // Optionally pass in some paramaters
+    // Optionally pass in some parameters
     motext.init('#target', {
       color: 'blue',
       revealProperty: 'scale'
@@ -41,17 +41,17 @@ Though you *can* import motext via a CDN like in the example above, you can alte
 
 ### init(element, options | optional)
 
-The init method takes two paramaters with the second one being optional.
+The init method takes two parameters with the second one being optional.
 
 **element**: Either a string in the form of a CSS selector or an actual DOM element(s)/NodeList. For example, the following would all be valid: `'.target'`, `'#target'`, `document.getElementById('#target')`, or `document.querySelectorAll('#target')`.
 
-**options**: An object specifiying the paramaters that motext should apply to the text animation. See below for more details or [try out the motext.js editor](https://themarkappleby.github.io/motext/) to experiment with them in real-time.
+**options**: An object specifying the parameters that motext should apply to the text animation. See below for more details or [try out the motext.js editor](https://themarkappleby.github.io/motext/) to experiment with them in real-time.
 
-The init method returns an instance of motext with the following struture:
+The init method returns an instance of motext with the following structure:
 ```
 {
   el: [String | HTMLElement | Nodelist] The element you original passed into the init method.
-  collection: [Array] The above element(s) seperated into a JS array.
+  collection: [Array] The above element(s) separated into a JS array.
   options: [Object] The options object you originally passed into the init method.
   timelines: [Array] An array of GreenSock timelines (one for each item in the collection).
   play: [Function] A method which plays all timelines in the timelines array when invoked. This method returns a promise that resolves once the motext animation has completed.
@@ -118,7 +118,7 @@ Default: `'none'`
 
 ## Changing the Font Size and Spacing
 
-The motext font size corresponds with whatever font size you apply to your target element via CSS. Motext also accounts for media queires with regards to font-size with a built-in window resize listener. You can also change various font spacing properties via CSS (default values are listed below):
+The motext font size corresponds with whatever font size you apply to your target element via CSS. Motext also accounts for media queries with regards to font-size with a built-in window resize listener. You can also change various font spacing properties via CSS (default values are listed below):
 
 ```
 .motext-word {
@@ -139,6 +139,6 @@ The motext font size corresponds with whatever font size you apply to your targe
 
 At the moment, motext only comes with a single font, which can be found in `/dist/fonts/motext.svg`. You can edit this SVG directly to change the look of the typeface. There is also a [Sketch](https://www.sketch.com/) file that can be found in `/src/fonts/motext.sketch` which you can use to alter the typeface. If you do create a new typeface, please consider adding it back to this project with a pull request.
 
-The motext typeface supports a subset of characters. These include: `A-Z a-z 0-9 ! ? . , " '`. If your text contains a character not found in that list, motext will omitted the character(s) and display a warning in the console. Support for additional characters can be added by altering motext.svg as noted above.
+The motext typeface supports a subset of characters. These include: `A-Z a-z 0-9 ! ? & . , " '`. If your text contains a character not found in that list, motext will omitted the character(s) and display a warning in the console. Support for additional characters can be added by altering motext.svg as noted above.
 
-Unfortuantely you cannot load any typeface into motext. The reason for this is that motext works on the assumption that each character is made up of one ore more strokes rather than filled shapes which traditional typefaces use.
+Unfortunately you cannot load any typeface into motext. The reason for this is that motext works on the assumption that each character is made up of one ore more strokes rather than filled shapes which traditional typefaces use.

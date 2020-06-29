@@ -23,7 +23,8 @@ const SYMBOL_MAP = {
   '.': 'period',
   ',': 'comma',
   '"': 'double-quote',
-  '\'': 'apostrophe'
+  '\'': 'apostrophe',
+  '&': 'ampersand'
 }
 
 const DESCENDERS = ['Q', 'g', 'j', 'p', 'q', 'y', ',']
@@ -147,7 +148,16 @@ function insertHTML (target, options) {
         } else if (ASCENDERS.includes(char)) {
           offset = 'ascend'
         }
-        html += openSVG(size.width + 10, size.height + 10, offset, options)
+        html += openSVG({
+          width: size.width + 10,
+          height: size.height + 10,
+          offset,
+          options,
+          character: symbol || char
+        })
+        /*
+          size.width + 10, size.height + 10, offset, options)
+          */
         html += svgChar.outerHTML
         html += svgLayer.outerHTML
         html += '</g></svg>'
@@ -238,11 +248,15 @@ function revealCharacter (options) {
   }
 }
 
-function openSVG (width, height, offset, options) {
+function openSVG ({ width, height, offset, options, character }) {
   let className = 'motext-letter'
   if (offset) {
     className += ` motext-letter--${offset}`
   }
+  if (character) {
+    className += ` motext-letter--${character}`
+  }
+  console.log('character', character)
   return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g class="motext-letterInner" stroke-linecap="${options.strokeLinecap}" stroke-linejoin="${options.strokeLinejoin}" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
 }
