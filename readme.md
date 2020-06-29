@@ -125,9 +125,11 @@ The motext font size corresponds with whatever font size you apply to your targe
   margin-right: 0.4em; /* controls space between words */
   margin-bottom: 0.4em; /* controls line-height */
 }
+
 .motext-letter {
   margin-right: 0.04em; /* controls letter-spacing */
 }
+
 .motext-letter--descend {
   margin-bottom: -0.22em; /* controls how far character with descenders (like j, p and q) drop */
 }
@@ -135,7 +137,7 @@ The motext font size corresponds with whatever font size you apply to your targe
 
 ## Changing the Font
 
-At the moment, motext only comes with a single font, which can be found in `/dist/fonts/motext.svg`. You can edit this SVG directly to change the look of the typeface. There is also a [Sketch](https://www.sketch.com/) file that can be found in `/sketch/motext.sketch` which you can use to alter the typeface. If you do create a new typeface, please consider adding it back to this project with a pull request.
+At the moment, motext only comes with a single font, which can be found in `/dist/fonts/motext.svg`. You can edit this SVG directly to change the look of the typeface. There is also a [Sketch](https://www.sketch.com/) file that can be found in `/src/fonts/motext.sketch` which you can use to alter the typeface. If you do create a new typeface, please consider adding it back to this project with a pull request.
 
 The motext typeface supports a subset of characters. These include: `A-Z a-z 0-9 ! ? . , " '`. If your text contains a character not found in that list, motext will omitted the character(s) and display a warning in the console. Support for additional characters can be added by altering motext.svg as noted above.
 
