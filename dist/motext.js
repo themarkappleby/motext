@@ -1,10 +1,12 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.motext = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('gsap')) :
+  typeof define === 'function' && define.amd ? define(['gsap'], factory) :
+  (global = global || self, global.motext = factory(global.gsap));
+}(this, (function (gsap) { 'use strict';
 
-  /* global gsap fetch Node HTMLElement, NodeList */
+  gsap = gsap && Object.prototype.hasOwnProperty.call(gsap, 'default') ? gsap['default'] : gsap;
+
+  /* global fetch Node HTMLElement, NodeList */
 
   const DEFAULT_OPTIONS = {
     color: '#000000',

@@ -1,4 +1,6 @@
-/* global gsap fetch Node HTMLElement, NodeList */
+/* global fetch Node HTMLElement, NodeList */
+
+import gsap from 'gsap'
 
 const DEFAULT_OPTIONS = {
   color: '#000000',
