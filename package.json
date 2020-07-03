@@ -4,8 +4,8 @@
   "description": "Javascript and SVG text animation library",
   "main": "dist/motext.js",
   "scripts": {
-    "start": "http-server -c-1 & rollup src/motext.js --file dist/motext.js --format umd --name motext --watch",
-    "build": "rollup src/motext.js --file dist/motext.js --format umd --name motext"
+    "start": "http-server -c-1 & rollup --config --watch",
+    "build": "rollup --config"
   },
   "publishConfig": {
     "access": "public"
