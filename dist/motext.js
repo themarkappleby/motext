@@ -7,7 +7,6 @@
   gsap = gsap && Object.prototype.hasOwnProperty.call(gsap, 'default') ? gsap['default'] : gsap;
 
   /* global fetch Node HTMLElement, NodeList */
-
   const DEFAULT_OPTIONS = {
     color: '#000000',
     colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
@@ -24,7 +23,6 @@
     staggerAmount: 0.1,
     staggerEase: 'none'
   };
-
   const SYMBOL_MAP = {
     '!': 'exclamation-mark',
     '?': 'question-mark',
@@ -34,41 +32,41 @@
     '\'': 'apostrophe',
     '&': 'ampersand'
   };
-
   const DESCENDERS = ['Q', 'g', 'j', 'p', 'q', 'y', ','];
   const ASCENDERS = ['"', '\''];
   const instances = [];
   let prepped = false;
   let fetchPromise = null;
 
-  function loadFont (path) {
+  function loadFont(path) {
     if (fetchPromise) {
-      return fetchPromise
+      return fetchPromise;
     } else {
-      fetchPromise = fetch(path)
-        .then(response => response.text())
-        .then(text => {
-          const fontWrapper = document.createElement('div');
-          fontWrapper.innerHTML = text;
-          fontWrapper.setAttribute('class', 'motext-font');
-          document.body.appendChild(fontWrapper);
-          addStyles();
-        })
-        .catch(err => {
-          console.error(err);
-        });
-      return fetchPromise
+      fetchPromise = fetch(path).then(response => response.text()).then(text => {
+        const fontWrapper = document.createElement('div');
+        fontWrapper.innerHTML = text;
+        fontWrapper.setAttribute('class', 'motext-font');
+        document.body.appendChild(fontWrapper);
+        addStyles();
+      }).catch(err => {
+        console.error(err);
+      });
+      return fetchPromise;
     }
   }
 
-  function init (el, options = {}) { // eslint-disable-line no-unused-vars
-    options = { ...DEFAULT_OPTIONS, ...options };
+  function init(el, options = {}) {
+    // eslint-disable-line no-unused-vars
+    options = { ...DEFAULT_OPTIONS,
+      ...options
+    };
     const timelines = [];
     const collection = getElementCollection(el);
     collection.forEach(target => {
       if (!prepped) {
         prepSVG(options);
       }
+
       target.setAttribute('aria-label', target.textContent);
       insertHTML(target, options);
       timelines.push(createTimeline(target, options));
@@ -83,17 +81,18 @@
         this.timelines.forEach(tl => {
           promises.push(tl.play());
         });
-        return Promise.all(promises)
+        return Promise.all(promises);
       }
     };
     instances.push(instance);
-    return instance
+    return instance;
   }
 
   window.addEventListener('resize', e => {
     instances.forEach(instance => {
       instance.collection.forEach(target => {
         const fontSize = getFontSize(target);
+
         if (fontSize !== target.fontSize) {
           applyFontSize(target, fontSize);
         }
@@ -101,14 +100,14 @@
     });
   });
 
-  function prepSVG (options) {
+  function prepSVG(options) {
     const font = document.getElementById('motext');
     prepFontStyles(font);
     layerCharacters(font, options);
     prepped = true;
   }
 
-  function prepFontStyles (font, options) {
+  function prepFontStyles(font, options) {
     const STROKE_LENGTH_BUFFER = 8;
     Array.from(font.children).forEach(char => {
       char.removeAttribute('transform');
@@ -117,7 +116,6 @@
       char.removeAttribute('stroke-linejoin');
       char.removeAttribute('stroke-width');
       char.setAttribute('class', 'motext-colored');
-
       const strokes = Array.from(char.children);
       strokes.forEach(stroke => {
         const length = stroke.getTotalLength() + STROKE_LENGTH_BUFFER;
@@ -127,7 +125,7 @@
     });
   }
 
-  function layerCharacters (font, options) {
+  function layerCharacters(font, options) {
     Array.from(font.children).forEach(char => {
       const charLayer = char.cloneNode(true);
       charLayer.setAttribute('class', 'motext-solid');
@@ -137,7 +135,7 @@
     });
   }
 
-  function insertHTML (target, options) {
+  function insertHTML(target, options) {
     let html = '<span class="motext"><span class="motext-word">';
     target.textContent.trim().split('').forEach(char => {
       if (char === ' ') {
@@ -148,14 +146,17 @@
         if (symbol) selector = 'mo-' + symbol;
         const svgChar = document.getElementById(selector);
         const svgLayer = document.getElementById(selector + 'l');
+
         if (svgChar && svgLayer) {
           const size = svgChar.getBBox();
           let offset = '';
+
           if (DESCENDERS.includes(char)) {
             offset = 'descend';
           } else if (ASCENDERS.includes(char)) {
             offset = 'ascend';
           }
+
           html += openSVG({
             width: size.width + 10,
             height: size.height + 10,
@@ -166,6 +167,7 @@
           /*
             size.width + 10, size.height + 10, offset, options)
             */
+
           html += svgChar.outerHTML;
           html += svgLayer.outerHTML;
           html += '</g></svg>';
@@ -181,14 +183,16 @@
     applyFontSize(target, fontSize);
   }
 
-  function applyColors (target, options) {
+  function applyColors(target, options) {
     let color = options.colors[0];
     Array.from(target.querySelectorAll('.motext-colored')).forEach(char => {
       char.setAttribute('stroke', color);
       let index = options.colors.indexOf(color) + 1;
+
       if (index >= options.colors.length) {
         index = 0;
       }
+
       color = options.colors[index];
     });
     Array.from(target.querySelectorAll('.motext-solid')).forEach(char => {
@@ -196,13 +200,13 @@
     });
   }
 
-  function getFontSize (target) {
+  function getFontSize(target) {
     let fontSize = window.getComputedStyle(target, null).getPropertyValue('font-size');
     fontSize = parseFloat(fontSize);
-    return fontSize
+    return fontSize;
   }
 
-  function applyFontSize (target, fontSize) {
+  function applyFontSize(target, fontSize) {
     target.fontSize = fontSize;
     const BASE_SVG_FONT_SIZE = 55;
     const scale = fontSize / BASE_SVG_FONT_SIZE;
@@ -214,7 +218,7 @@
     });
   }
 
-  function createTimeline (target, options) {
+  function createTimeline(target, options) {
     const colored = target.querySelectorAll('.motext-colored path, .motext-colored polyline');
     const tl = gsap.timeline();
     tl.to(colored, {
@@ -240,11 +244,12 @@
       }
     }, options.offsetDuration);
     tl.pause();
-    return tl
+    return tl;
   }
 
-  function revealCharacter (options) {
+  function revealCharacter(options) {
     const target = this.targets()[0].closest('.motext-letter');
+
     if (!target.getAttribute('data-revealed')) {
       const revealParams = {
         ease: options.revealEase,
@@ -256,52 +261,55 @@
     }
   }
 
-  function openSVG ({ width, height, offset, options, character }) {
+  function openSVG({
+    width,
+    height,
+    offset,
+    options,
+    character
+  }) {
     let className = 'motext-letter';
+
     if (offset) {
       className += ` motext-letter--${offset}`;
     }
+
     if (character) {
       className += ` motext-letter--${character}`;
     }
+
     return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <g class="motext-letterInner" stroke-linecap="${options.strokeLinecap}" stroke-linejoin="${options.strokeLinejoin}" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
+  <g class="motext-letterInner" stroke-linecap="${options.strokeLinecap}" stroke-linejoin="${options.strokeLinejoin}" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`;
   }
 
-  function getElementCollection (el) {
+  function getElementCollection(el) {
     if (typeof el === 'string') {
       el = document.querySelectorAll(el);
-      return Array.from(el)
+      return Array.from(el);
     } else if (isNodeList(el)) {
-      return Array.from(el)
+      return Array.from(el);
     } else if (isNode(el) || isElement(el)) {
-      return [el]
+      return [el];
     } else {
-      return []
+      return [];
     }
   }
 
-  function isNode (el) {
-  // ref: https://stackoverflow.com/a/384380/918060
-    return (
-      typeof Node === 'object' ? el instanceof Node
-        : el && typeof el === 'object' && typeof el.nodeType === 'number' && typeof el.nodeName === 'string'
-    )
+  function isNode(el) {
+    // ref: https://stackoverflow.com/a/384380/918060
+    return typeof Node === 'object' ? el instanceof Node : el && typeof el === 'object' && typeof el.nodeType === 'number' && typeof el.nodeName === 'string';
   }
 
-  function isElement (el) {
-    return (
-      typeof HTMLElement === 'object' ? el instanceof HTMLElement
-        : el && typeof el === 'object' && el !== null && el.nodeType === 1 && typeof el.nodeName === 'string'
-    )
+  function isElement(el) {
+    return typeof HTMLElement === 'object' ? el instanceof HTMLElement : el && typeof el === 'object' && el !== null && el.nodeType === 1 && typeof el.nodeName === 'string';
   }
 
-  function isNodeList (el) {
-  // ref: https://stackoverflow.com/a/36857902/918060
-  return NodeList.prototype.isPrototypeOf(el) // eslint-disable-line
+  function isNodeList(el) {
+    // ref: https://stackoverflow.com/a/36857902/918060
+    return NodeList.prototype.isPrototypeOf(el); // eslint-disable-line
   }
 
-  function addStyles () {
+  function addStyles() {
     const style = document.createElement('style');
     document.head.prepend(style);
     style.textContent = `
