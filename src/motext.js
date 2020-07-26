@@ -1,5 +1,7 @@
 /* global fetch Node HTMLElement, NodeList */
 
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import gsap from 'gsap'
 
 const DEFAULT_OPTIONS = {
