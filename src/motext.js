@@ -5,6 +5,8 @@ import 'regenerator-runtime/runtime'
 import 'whatwg-fetch'
 import gsap from 'gsap'
 
+let cnt = 1
+
 const DEFAULT_OPTIONS = {
   color: '#000000',
   colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
@@ -14,7 +16,7 @@ const DEFAULT_OPTIONS = {
   revealEase: 'elastic',
   strokeWidth: 8,
   strokeLinecap: 'square',
-  strokeLinejoin: 'bevel',
+  strokeLinejoin: 'auto',
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,
@@ -197,15 +199,12 @@ function insertHTML (target, options) {
           offset = 'ascend'
         }
         html += openSVG({
-          width: size.width + 10,
-          height: size.height + 10,
+          width: size.width + 11,
+          height: size.height + 11,
           offset,
           options,
           character: symbol || char
         })
-        /*
-          size.width + 10, size.height + 10, offset, options)
-          */
         html += svgChar.outerHTML
         html += svgLayer.outerHTML
         html += '</g></svg>'
@@ -304,8 +303,11 @@ function openSVG ({ width, height, offset, options, character }) {
   if (character) {
     className += ` motext-letter--${character}`
   }
-  return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <g class="motext-letterInner" stroke-linecap="${options.strokeLinecap}" stroke-linejoin="${options.strokeLinejoin}" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
+
+  className += ` motext-letter--${cnt}`
+  cnt++
+
+  return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="motext-letterInner" ${ options.strokeLinecap === 'auto' ? '' : `stroke-linecap=${options.strokeLinecap}`} ${ options.strokeLinejoin === 'auto' ? '' : `stroke-linejoin="${options.strokeLinejoin}"` }  fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
 }
 
 function getElementCollection (el) {
@@ -353,20 +355,28 @@ function addStyles () {
     white-space: nowrap;
     display: inline-block;
     vertical-align: bottom;
-    margin-right: 0.4em;
+    margin-right: 0.3em;
     margin-bottom: 0.4em;
   }
 
   .motext-letter {
-    margin-right: 0.04em;
-  }
-
-  .motext-letter--descend {
-    margin-bottom: -0.22em;
+    margin-right: 0.02em;
   }
 
   .motext-letter--ascend {
     vertical-align: top;
+  }
+
+  .motext-letter--descend {
+    margin-bottom: -0.19em;
+  }
+
+  .motext-letter--u {
+    margin-bottom: -0.02em;
+  }
+
+  .motext-letter--e {
+    margin-bottom: -0.01em;
   }
 
   .motext-font {

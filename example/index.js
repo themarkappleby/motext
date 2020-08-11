@@ -9,7 +9,7 @@ const options = {
   revealEase: 'elastic',
   strokeWidth: 8,
   strokeLinecap: 'square',
-  strokeLinejoin: 'bevel',
+  strokeLinejoin: 'auto',
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,

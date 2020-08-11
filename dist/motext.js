@@ -71,6 +71,7 @@
     return target;
   }
 
+  var cnt = 1;
   var DEFAULT_OPTIONS = {
     color: '#000000',
     colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
@@ -80,7 +81,7 @@
     revealEase: 'elastic',
     strokeWidth: 8,
     strokeLinecap: 'square',
-    strokeLinejoin: 'bevel',
+    strokeLinejoin: 'auto',
     strokeDuration: 1,
     strokeEase: 'slow',
     offsetDuration: 0.15,
@@ -268,16 +269,12 @@
           }
 
           html += openSVG({
-            width: size.width + 10,
-            height: size.height + 10,
+            width: size.width + 11,
+            height: size.height + 11,
             offset: offset,
             options: options,
             character: symbol || char
           });
-          /*
-            size.width + 10, size.height + 10, offset, options)
-            */
-
           html += svgChar.outerHTML;
           html += svgLayer.outerHTML;
           html += '</g></svg>';
@@ -387,7 +384,9 @@
       className += " motext-letter--".concat(character);
     }
 
-    return "<svg class=\"".concat(className, "\" data-base-width=\"").concat(width, "\" data-base-height=\"").concat(height, "\" width=\"").concat(width, "px\" height=\"").concat(height, "px\" viewBox=\"0 0 ").concat(width, " ").concat(height, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n  <g class=\"motext-letterInner\" stroke-linecap=\"").concat(options.strokeLinecap, "\" stroke-linejoin=\"").concat(options.strokeLinejoin, "\" fill=\"none\" transform=\"translate(").concat(options.strokeWidth / 2, ", ").concat(options.strokeWidth / 2, ")\" stroke-width=\"").concat(options.strokeWidth, "\">");
+    className += " motext-letter--".concat(cnt);
+    cnt++;
+    return "<svg class=\"".concat(className, "\" data-base-width=\"").concat(width, "\" data-base-height=\"").concat(height, "\" width=\"").concat(width, "px\" height=\"").concat(height, "px\" viewBox=\"0 0 ").concat(width, " ").concat(height, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g class=\"motext-letterInner\" ").concat(options.strokeLinecap === 'auto' ? '' : "stroke-linecap=".concat(options.strokeLinecap), " ").concat(options.strokeLinejoin === 'auto' ? '' : "stroke-linejoin=\"".concat(options.strokeLinejoin, "\""), "  fill=\"none\" transform=\"translate(").concat(options.strokeWidth / 2, ", ").concat(options.strokeWidth / 2, ")\" stroke-width=\"").concat(options.strokeWidth, "\">");
   }
 
   function getElementCollection(el) {
@@ -420,7 +419,7 @@
   function addStyles() {
     var style = document.createElement('style');
     document.head.prepend(style);
-    style.textContent = "\n  .motext {\n    display: inline-block;\n  }\n\n  .motext-word {\n    white-space: nowrap;\n    display: inline-block;\n    vertical-align: bottom;\n    margin-right: 0.4em;\n    margin-bottom: 0.4em;\n  }\n\n  .motext-letter {\n    margin-right: 0.04em;\n  }\n\n  .motext-letter--descend {\n    margin-bottom: -0.22em;\n  }\n\n  .motext-letter--ascend {\n    vertical-align: top;\n  }\n\n  .motext-font {\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n    width: 0;\n    height: 0;\n    overflow: hidden;\n    visibility: hidden;\n  }\n";
+    style.textContent = "\n  .motext {\n    display: inline-block;\n  }\n\n  .motext-word {\n    white-space: nowrap;\n    display: inline-block;\n    vertical-align: bottom;\n    margin-right: 0.3em;\n    margin-bottom: 0.4em;\n  }\n\n  .motext-letter {\n    margin-right: 0.02em;\n  }\n\n  .motext-letter--ascend {\n    vertical-align: top;\n  }\n\n  .motext-letter--descend {\n    margin-bottom: -0.19em;\n  }\n\n  .motext-letter--u {\n    margin-bottom: -0.02em;\n  }\n\n  .motext-letter--e {\n    margin-bottom: -0.01em;\n  }\n\n  .motext-font {\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n    width: 0;\n    height: 0;\n    overflow: hidden;\n    visibility: hidden;\n  }\n";
   }
 
   var motext = {
