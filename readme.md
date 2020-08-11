@@ -89,12 +89,12 @@ The stroke width to use for the font.
 Default: `8`
 
 ### strokeLinecap
-The SVG linecap to use for the font. Supported values are: `butt`, `round`, or `square`.
+The SVG linecap to use for the font. Supported values are: `butt`, `round`, `square`, or `auto` (`auto` does not apply any linecap style and instead uses the value that is defined in the SVG font itself).
 Default: `'square'`
 
 ### strokeLinejoin
-The SVG linejoin to use for the font. Supported values are: `arcs`, `bevel`, `miter`, `miter-clip`, or `round`.
-Default: `'bevel'`
+The SVG linejoin to use for the font. Supported values are: `arcs`, `bevel`, `miter`, `miter-clip`, `round`, or `auto` (`auto` does not apply any linejoin style and instead uses the value that is defined in the SVG font itself).
+Default: `'auto'`
 
 ### strokeDuration
 The amount of time it takes for a single character stroke to animate.
