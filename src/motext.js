@@ -21,7 +21,8 @@ const DEFAULT_OPTIONS = {
   strokeEase: 'slow',
   offsetDuration: 0.15,
   staggerAmount: 0.1,
-  staggerEase: 'none'
+  staggerEase: 'none',
+  font: 'nunito' // TODO: hook-up to editor drop-down
 }
 
 const SYMBOL_MAP = {
@@ -34,8 +35,6 @@ const SYMBOL_MAP = {
   '&': 'ampersand'
 };
 
-// prepend() polyfill for IE 11
-// Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/prepend()/prepend().md
 (function (arr) {
   arr.forEach(function (item) {
     if (item.hasOwnProperty('prepend')) { // eslint-disable-line
@@ -79,6 +78,8 @@ if (!Element.prototype.closest) {
 
 const DESCENDERS = ['Q', 'g', 'j', 'p', 'q', 'y', ',']
 const ASCENDERS = ['"', '\'']
+const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const instances = []
 let prepped = false
 let fetchPromise = null
@@ -144,23 +145,19 @@ window.addEventListener('resize', e => {
 })
 
 function prepSVG (options) {
-  const font = document.getElementById('motext')
+  const font = document.getElementById(options.font)
   prepFontStyles(font, options)
   layerCharacters(font, options)
   prepped = true
 }
 
 function prepFontStyles (font, options) {
-  const STROKE_LENGTH_BUFFER = 8
+  const STROKE_LENGTH_BUFFER = 11
   Array.from(font.children).forEach(char => {
-    char.removeAttribute('transform')
-    char.removeAttribute('opacity')
-    char.removeAttribute('stroke-linecap')
-    char.removeAttribute('stroke-linejoin')
-    char.removeAttribute('stroke-width')
+    if (char.nodeName !== 'g') return
     char.setAttribute('class', 'motext-colored')
 
-    const strokes = Array.from(char.children)
+    const strokes = Array.from(char.querySelectorAll('mask path'))
     strokes.forEach(stroke => {
       const length = stroke.getTotalLength() + STROKE_LENGTH_BUFFER
       stroke.style.strokeDasharray = length
@@ -171,10 +168,15 @@ function prepFontStyles (font, options) {
 
 function layerCharacters (font, options) {
   Array.from(font.children).forEach(char => {
+    if (char.nodeName !== 'g') return
     const charLayer = char.cloneNode(true)
     charLayer.setAttribute('class', 'motext-solid')
     charLayer.setAttribute('id', char.id + 'l')
-    charLayer.setAttribute('stroke', options.color)
+    const mask = charLayer.querySelector('mask')
+    const g = charLayer.querySelector('mask + g')
+    const maskID = mask.getAttribute('id')
+    mask.setAttribute('id', `${maskID}-dup`)
+    g.setAttribute('mask', `url(#${maskID}-dup)`)
     font.appendChild(charLayer)
   })
 }
@@ -222,16 +224,16 @@ function insertHTML (target, options) {
 
 function applyColors (target, options) {
   let color = options.colors[0]
-  Array.from(target.querySelectorAll('.motext-colored')).forEach(char => {
-    char.setAttribute('stroke', color)
+  Array.from(target.querySelectorAll('.motext-colored mask + g path')).forEach(char => {
+    char.setAttribute('fill', color)
     let index = options.colors.indexOf(color) + 1
     if (index >= options.colors.length) {
       index = 0
     }
     color = options.colors[index]
   })
-  Array.from(target.querySelectorAll('.motext-solid')).forEach(char => {
-    char.setAttribute('stroke', options.color)
+  Array.from(target.querySelectorAll('.motext-solid mask + g path')).forEach(char => {
+    char.setAttribute('fill', options.color)
   })
 }
 
@@ -268,6 +270,7 @@ function createTimeline (target, options) {
       }
     }
   })
+
   const solid = target.querySelectorAll('.motext-solid path, .motext-solid polyline')
   tl.to(solid, {
     duration: options.strokeDuration,
@@ -278,6 +281,7 @@ function createTimeline (target, options) {
       ease: options.staggerEase
     }
   }, options.offsetDuration)
+  // }, 10)
   tl.pause()
   return tl
 }
@@ -303,11 +307,16 @@ function openSVG ({ width, height, offset, options, character }) {
   if (character) {
     className += ` motext-letter--${character}`
   }
+  if (UPPERCASE.includes(character)) {
+    className += ' motext-letter--uppercase'
+  } else if (LOWERCASE.includes(character)) {
+    className += ' motext-letter--lowercase'
+  }
 
   className += ` motext-letter--${cnt}`
   cnt++
 
-  return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="motext-letterInner" ${ options.strokeLinecap === 'auto' ? '' : `stroke-linecap=${options.strokeLinecap}`} ${ options.strokeLinejoin === 'auto' ? '' : `stroke-linejoin="${options.strokeLinejoin}"` }  fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})" stroke-width="${options.strokeWidth}">`
+  return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="motext-letterInner" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})">`
 }
 
 function getElementCollection (el) {
@@ -355,12 +364,16 @@ function addStyles () {
     white-space: nowrap;
     display: inline-block;
     vertical-align: bottom;
-    margin-right: 0.3em;
+    margin-right: 0.4em;
     margin-bottom: 0.4em;
   }
 
+  .motext-word:last-child {
+    margin-right: 0;
+  }
+
   .motext-letter {
-    margin-right: 0.02em;
+    margin-right: -0.08em;
   }
 
   .motext-letter--ascend {
@@ -369,14 +382,6 @@ function addStyles () {
 
   .motext-letter--descend {
     margin-bottom: -0.19em;
-  }
-
-  .motext-letter--u {
-    margin-bottom: -0.02em;
-  }
-
-  .motext-letter--e {
-    margin-bottom: -0.01em;
   }
 
   .motext-font {

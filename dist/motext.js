@@ -86,7 +86,9 @@
     strokeEase: 'slow',
     offsetDuration: 0.15,
     staggerAmount: 0.1,
-    staggerEase: 'none'
+    staggerEase: 'none',
+    font: 'nunito' // TODO: hook-up to editor drop-down
+
   };
   var SYMBOL_MAP = {
     '!': 'exclamation-mark',
@@ -96,8 +98,7 @@
     '"': 'double-quote',
     '\'': 'apostrophe',
     '&': 'ampersand'
-  }; // prepend() polyfill for IE 11
-  // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/prepend()/prepend().md
+  };
 
   (function (arr) {
     arr.forEach(function (item) {
@@ -144,6 +145,8 @@
 
   var DESCENDERS = ['Q', 'g', 'j', 'p', 'q', 'y', ','];
   var ASCENDERS = ['"', '\''];
+  var UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  var LOWERCASE = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var instances = [];
   var prepped = false;
   var fetchPromise = null;
@@ -212,22 +215,18 @@
   });
 
   function prepSVG(options) {
-    var font = document.getElementById('motext');
+    var font = document.getElementById(options.font);
     prepFontStyles(font);
-    layerCharacters(font, options);
+    layerCharacters(font);
     prepped = true;
   }
 
   function prepFontStyles(font, options) {
-    var STROKE_LENGTH_BUFFER = 8;
+    var STROKE_LENGTH_BUFFER = 11;
     Array.from(font.children).forEach(function (char) {
-      char.removeAttribute('transform');
-      char.removeAttribute('opacity');
-      char.removeAttribute('stroke-linecap');
-      char.removeAttribute('stroke-linejoin');
-      char.removeAttribute('stroke-width');
+      if (char.nodeName !== 'g') return;
       char.setAttribute('class', 'motext-colored');
-      var strokes = Array.from(char.children);
+      var strokes = Array.from(char.querySelectorAll('mask path'));
       strokes.forEach(function (stroke) {
         var length = stroke.getTotalLength() + STROKE_LENGTH_BUFFER;
         stroke.style.strokeDasharray = length;
@@ -238,10 +237,15 @@
 
   function layerCharacters(font, options) {
     Array.from(font.children).forEach(function (char) {
+      if (char.nodeName !== 'g') return;
       var charLayer = char.cloneNode(true);
       charLayer.setAttribute('class', 'motext-solid');
       charLayer.setAttribute('id', char.id + 'l');
-      charLayer.setAttribute('stroke', options.color);
+      var mask = charLayer.querySelector('mask');
+      var g = charLayer.querySelector('mask + g');
+      var maskID = mask.getAttribute('id');
+      mask.setAttribute('id', "".concat(maskID, "-dup"));
+      g.setAttribute('mask', "url(#".concat(maskID, "-dup)"));
       font.appendChild(charLayer);
     });
   }
@@ -292,8 +296,8 @@
 
   function applyColors(target, options) {
     var color = options.colors[0];
-    Array.from(target.querySelectorAll('.motext-colored')).forEach(function (char) {
-      char.setAttribute('stroke', color);
+    Array.from(target.querySelectorAll('.motext-colored mask + g path')).forEach(function (char) {
+      char.setAttribute('fill', color);
       var index = options.colors.indexOf(color) + 1;
 
       if (index >= options.colors.length) {
@@ -302,8 +306,8 @@
 
       color = options.colors[index];
     });
-    Array.from(target.querySelectorAll('.motext-solid')).forEach(function (char) {
-      char.setAttribute('stroke', options.color);
+    Array.from(target.querySelectorAll('.motext-solid mask + g path')).forEach(function (char) {
+      char.setAttribute('fill', options.color);
     });
   }
 
@@ -349,7 +353,8 @@
         each: options.staggerAmount,
         ease: options.staggerEase
       }
-    }, options.offsetDuration);
+    }, options.offsetDuration); // }, 10)
+
     tl.pause();
     return tl;
   }
@@ -384,9 +389,15 @@
       className += " motext-letter--".concat(character);
     }
 
+    if (UPPERCASE.includes(character)) {
+      className += ' motext-letter--uppercase';
+    } else if (LOWERCASE.includes(character)) {
+      className += ' motext-letter--lowercase';
+    }
+
     className += " motext-letter--".concat(cnt);
     cnt++;
-    return "<svg class=\"".concat(className, "\" data-base-width=\"").concat(width, "\" data-base-height=\"").concat(height, "\" width=\"").concat(width, "px\" height=\"").concat(height, "px\" viewBox=\"0 0 ").concat(width, " ").concat(height, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g class=\"motext-letterInner\" ").concat(options.strokeLinecap === 'auto' ? '' : "stroke-linecap=".concat(options.strokeLinecap), " ").concat(options.strokeLinejoin === 'auto' ? '' : "stroke-linejoin=\"".concat(options.strokeLinejoin, "\""), "  fill=\"none\" transform=\"translate(").concat(options.strokeWidth / 2, ", ").concat(options.strokeWidth / 2, ")\" stroke-width=\"").concat(options.strokeWidth, "\">");
+    return "<svg class=\"".concat(className, "\" data-base-width=\"").concat(width, "\" data-base-height=\"").concat(height, "\" width=\"").concat(width, "px\" height=\"").concat(height, "px\" viewBox=\"0 0 ").concat(width, " ").concat(height, "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g class=\"motext-letterInner\" fill=\"none\" transform=\"translate(").concat(options.strokeWidth / 2, ", ").concat(options.strokeWidth / 2, ")\">");
   }
 
   function getElementCollection(el) {
@@ -419,7 +430,7 @@
   function addStyles() {
     var style = document.createElement('style');
     document.head.prepend(style);
-    style.textContent = "\n  .motext {\n    display: inline-block;\n  }\n\n  .motext-word {\n    white-space: nowrap;\n    display: inline-block;\n    vertical-align: bottom;\n    margin-right: 0.3em;\n    margin-bottom: 0.4em;\n  }\n\n  .motext-letter {\n    margin-right: 0.02em;\n  }\n\n  .motext-letter--ascend {\n    vertical-align: top;\n  }\n\n  .motext-letter--descend {\n    margin-bottom: -0.19em;\n  }\n\n  .motext-letter--u {\n    margin-bottom: -0.02em;\n  }\n\n  .motext-letter--e {\n    margin-bottom: -0.01em;\n  }\n\n  .motext-font {\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n    width: 0;\n    height: 0;\n    overflow: hidden;\n    visibility: hidden;\n  }\n";
+    style.textContent = "\n  .motext {\n    display: inline-block;\n  }\n\n  .motext-word {\n    white-space: nowrap;\n    display: inline-block;\n    vertical-align: bottom;\n    margin-right: 0.4em;\n    margin-bottom: 0.4em;\n  }\n\n  .motext-word:last-child {\n    margin-right: 0;\n  }\n\n  .motext-letter {\n    margin-right: -0.08em;\n  }\n\n  .motext-letter--ascend {\n    vertical-align: top;\n  }\n\n  .motext-letter--descend {\n    margin-bottom: -0.19em;\n  }\n\n  .motext-font {\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n    width: 0;\n    height: 0;\n    overflow: hidden;\n    visibility: hidden;\n  }\n";
   }
 
   var motext = {
