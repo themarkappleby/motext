@@ -167,7 +167,3 @@ input[type="color"] {
 .documentation:hover {
   color: white;
 }
-
-.controls {
-  display: none;
-}

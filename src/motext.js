@@ -11,18 +11,15 @@ const DEFAULT_OPTIONS = {
   color: '#000000',
   colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
   revealProperty: 'y',
-  revealAmount: -6,
+  revealAmount: -10,
   revealDuration: 0.8,
   revealEase: 'elastic',
-  strokeWidth: 8,
-  strokeLinecap: 'square',
-  strokeLinejoin: 'auto',
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,
   staggerAmount: 0.1,
   staggerEase: 'none',
-  font: 'nunito' // TODO: hook-up to editor drop-down
+  font: 'nunito'
 }
 
 const SYMBOL_MAP = {
@@ -172,11 +169,6 @@ function layerCharacters (font, options) {
     const charLayer = char.cloneNode(true)
     charLayer.setAttribute('class', 'motext-solid')
     charLayer.setAttribute('id', char.id + 'l')
-    const mask = charLayer.querySelector('mask')
-    const g = charLayer.querySelector('mask + g')
-    const maskID = mask.getAttribute('id')
-    mask.setAttribute('id', `${maskID}-dup`)
-    g.setAttribute('mask', `url(#${maskID}-dup)`)
     font.appendChild(charLayer)
   })
 }
@@ -218,6 +210,7 @@ function insertHTML (target, options) {
   html += '</span></span>'
   target.innerHTML = html
   applyColors(target, options)
+  uniqueMaskIds(target)
   const fontSize = getFontSize(target)
   applyFontSize(target, fontSize)
 }
@@ -234,6 +227,18 @@ function applyColors (target, options) {
   })
   Array.from(target.querySelectorAll('.motext-solid mask + g path')).forEach(char => {
     char.setAttribute('fill', options.color)
+  })
+}
+
+function uniqueMaskIds (target) {
+  let maskCnt = 1
+  target.querySelectorAll('.motext-letterInner').forEach(letter => {
+    letter.querySelector('.motext-colored > mask').setAttribute('id', `mo-mask-colored-${maskCnt}`)
+    letter.querySelector('.motext-colored > g').setAttribute('mask', `url(#mo-mask-colored-${maskCnt})`)
+
+    letter.querySelector('.motext-solid > mask').setAttribute('id', `mo-mask-solid-${maskCnt}`)
+    letter.querySelector('.motext-solid > g').setAttribute('mask', `url(#mo-mask-solid-${maskCnt})`)
+    maskCnt++
   })
 }
 
@@ -316,7 +321,7 @@ function openSVG ({ width, height, offset, options, character }) {
   className += ` motext-letter--${cnt}`
   cnt++
 
-  return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="motext-letterInner" fill="none" transform="translate(${options.strokeWidth / 2}, ${options.strokeWidth / 2})">`
+  return `<svg class="${className}" data-base-width="${width}" data-base-height="${height}" width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="motext-letterInner" fill="none" transform="translate(0,0)">`
 }
 
 function getElementCollection (el) {
@@ -392,6 +397,12 @@ function addStyles () {
     height: 0;
     overflow: hidden;
     visibility: hidden;
+  }
+
+  .motext-letter--T.motext-letter--uppercase + .motext-letter--o,
+  .motext-letter--W.motext-letter--uppercase + .motext-letter--e,
+  .motext-letter--W.motext-letter--uppercase + .motext-letter--o {
+    margin-left: -0.15em;
   }
 `
 }
