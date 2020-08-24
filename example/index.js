@@ -4,19 +4,17 @@ const options = {
   color: '#000000',
   colors: ['#0dafb7', '#eabc36', '#e154ed', '#62d628'],
   revealProperty: 'y',
-  revealAmount: -6,
+  revealAmount: -10,
   revealDuration: 0.8,
   revealEase: 'elastic',
-  strokeWidth: 8,
-  strokeLinecap: 'square',
-  strokeLinejoin: 'auto',
   strokeDuration: 1,
   strokeEase: 'slow',
   offsetDuration: 0.15,
   staggerAmount: 0.1,
-  staggerEase: 'none'
+  staggerEase: 'none',
+  font: 'nunito'
 }
-motext.loadFont('dist/fonts/motext.svg').then(() => {
+motext.loadFont('dist/fonts/nunito.svg').then(() => {
   document.getElementById('target').style.opacity = 1
   play()
 })
