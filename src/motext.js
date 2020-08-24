@@ -286,7 +286,6 @@ function createTimeline (target, options) {
       ease: options.staggerEase
     }
   }, options.offsetDuration)
-  // }, 10)
   tl.pause()
   return tl
 }

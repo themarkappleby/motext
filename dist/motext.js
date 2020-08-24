@@ -356,8 +356,7 @@
         each: options.staggerAmount,
         ease: options.staggerEase
       }
-    }, options.offsetDuration); // }, 10)
-
+    }, options.offsetDuration);
     tl.pause();
     return tl;
   }
