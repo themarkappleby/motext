@@ -260,7 +260,7 @@ function applyFontSize (target, fontSize) {
   })
 }
 
-function createTimeline (target, options) {
+function createTimeline (target, options) {  
   const colored = target.querySelectorAll('.motext-colored path, .motext-colored polyline')
   const tl = gsap.timeline()
   tl.to(colored, {
@@ -298,8 +298,17 @@ function revealCharacter (options) {
       duration: options.revealDuration
     }
     revealParams[options.revealProperty] = options.revealAmount
-    gsap.from(target, revealParams)
+    const tw = gsap.from(target, revealParams)
+    tw.pause();
+    prepareReveal(target, options)
+    tw.play();
     target.setAttribute('data-revealed', true)
+  }
+}
+
+function prepareReveal (target, options) {
+  if (options.revealProperty === 'opacity') {   
+    target.setAttribute('style', `opacity: ${options.revealAmount}`);
   }
 }
 
