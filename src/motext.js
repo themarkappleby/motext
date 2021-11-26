@@ -298,8 +298,17 @@ function revealCharacter (options) {
       duration: options.revealDuration
     }
     revealParams[options.revealProperty] = options.revealAmount
-    gsap.from(target, revealParams)
+    const tw = gsap.from(target, revealParams)
+    tw.pause();
+    prepareReveal(target, options)
+    tw.play();
     target.setAttribute('data-revealed', true)
+  }
+}
+
+function prepareReveal (target, options) {
+  if (options.revealProperty === 'opacity') {   
+    target.setAttribute('style', `opacity: ${options.revealAmount}`);
   }
 }
 
