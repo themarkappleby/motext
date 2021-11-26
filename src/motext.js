@@ -260,7 +260,7 @@ function applyFontSize (target, fontSize) {
   })
 }
 
-function createTimeline (target, options) {  
+function createTimeline (target, options) {
   const colored = target.querySelectorAll('.motext-colored path, .motext-colored polyline')
   const tl = gsap.timeline()
   tl.to(colored, {
